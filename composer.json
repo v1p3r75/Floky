@@ -1,0 +1,19 @@
+{
+    "name": "fried75/floky",
+    "description": "A MVC Framework PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/app",
+            "Floky\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "v1p3r75",
+            "email": "elfriedv16@gmail.com"
+        }
+    ],
+    "require": {}
+}

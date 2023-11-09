@@ -1,0 +1,7 @@
+Options -Indexes
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} index.php
+
+RewriteRule !\.(pdf|js|ico|gif|jpg|png|svg|css|map|woff2|ttf|rar|zip|tar\.gz)$ index.php/$1
