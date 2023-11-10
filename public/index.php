@@ -2,7 +2,7 @@
 
 /**
  * DO NOT CHANGE OR DELETE THIS FILE
- * Author : v1p3r75 (Elfried Fortunatus KIDJE) <elfriev16@gmail.com>
+ * Author : v1p3r75 (Elfried Fortunatus KIDJE)
  *
 */
 

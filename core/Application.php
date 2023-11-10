@@ -2,14 +2,19 @@
 
 namespace Floky;
 
-use Floky\Routes\Route;
+use Floky\Routing\Route;
 
 class Application 
 {
 
     public array $config = [];
 
-    public function __construct(public string $root_dir) {}
+    public Route $routing;
+
+    public function __construct(public string $root_dir) {
+
+        $this->routing = new Route();
+    }
 
     /**
      * Save all applications services (middlewares, consoles, etc)
@@ -19,15 +24,26 @@ class Application
         $this->config = $config;
 
     }
-    public function run() {
+
+    /**
+     * Start a new application
+     */
+    public function run(): void {
 
         require(__DIR__ . "/helpers.php");
 
-        Route::get("/", function() { echo "test"; });
-        Route::get("/test", function() { echo "test"; });
-        Route::get("/service", function() { echo "test"; });
+        $route = new Route();
 
-        var_dump(Route::getAll());
+        $route2 = new Route();
+
+        $route->get('test1', []);
+        $route2->post('test2', []);
+        $route->patch('test3', []);
+        $route->put('test4', []);
+        $route->delete('test5', []);
+
+        $route->dispatch($_SERVER['REQUEST_URI']);
+
     }
 
 }
