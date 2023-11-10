@@ -6,18 +6,27 @@ class Container
  {
     public array $services = [];
 
-    public function get($class)
+    public function get($id)
     {
-        if (! isset($this->services[$class])) {
+        if (! isset($this->services[$id])) {
 
-            return $this->resolveDependencies($class);
+            return $this->resolveDependencies($id);
         }
 
-        return $this->services[$class];
+        return $this->services[$id];
     }
 
-    public function resolveDependencies($class) {
+    public function resolveDependencies($id) {
 
-        
+        $reflection = new \ReflectionClass($id);
+
+        $constructor = $reflection->getConstructor();
+
+        if (! $constructor) {
+
+            
+        }
     }
+
+
  }
