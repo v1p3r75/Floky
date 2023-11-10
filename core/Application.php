@@ -13,7 +13,7 @@ class Application
 
     public function __construct(public string $root_dir) {
 
-        $this->routing = new Route();
+        $this->routing =new Route() ;
     }
 
     /**
