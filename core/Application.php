@@ -2,6 +2,7 @@
 
 namespace Floky;
 
+use eftec\bladeone\BladeOne;
 use Floky\Container\Container;
 use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
@@ -103,5 +104,12 @@ class Application
     public static function getAppDirectory() {
 
         return self::$root_dir;
+    }
+
+    public static function getBlade(): BladeOne {
+
+        $blade = new BladeOne(app_view_path() , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+
+        return $blade;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use eftec\bladeone\BladeOne;
 use Floky\Application;
 
 function app_root_path(): string {
@@ -18,6 +19,18 @@ function app_http_path(): string {
     return app_root_path() . "/app/Http/";
 }
 
+function app_view_path(): string {
+
+    return app_root_path() . "/views";
+
+}
+
+function app_cache_path(): string {
+
+    return app_root_path() . "/cache";
+
+}
+
 function secure($data) {
 
     if (is_array($data)) {
@@ -33,6 +46,16 @@ function secure($data) {
     }
 
     return $data;
+}
+
+
+function view(string $name, $data = [])
+{
+
+    $blade = Application::getBlade();
+
+    echo $blade->run($name, $data);
+
 }
 
 // function response(int $code = 200): \Floky\Http\Responses\Response 

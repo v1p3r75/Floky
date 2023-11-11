@@ -6,7 +6,7 @@ use Floky\Routing\Route;
 
 Route::get('/', function() {
 
-    echo "Welcome To Floky";
+    return view('welcome', ['name' => 'Floky']);
 });
 
 Route::get('/contact', [WelcomeController::class, 'index']);
