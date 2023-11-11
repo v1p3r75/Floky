@@ -45,13 +45,13 @@ class Application
     /**
      * Start a new application
      */
-    public function run(): void {
+    public function run() {
 
         require(__DIR__ . "/helpers.php"); // load function helpers 
         require($this->root_dir . "/routes/web.php");
         require($this->root_dir . "/routes/api.php");
-        Route::dispatch($this->request);
 
+        return Route::dispatch($this->request);
     }
 
 }
