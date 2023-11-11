@@ -55,14 +55,18 @@ class Request  {
 
 	public static function getUri(string $type = 'string') {
 
-		if($type == 'string') return $_SERVER['REQUEST_URI'];
-		else if($type == 'array') return explode('/',$_SERVER['REQUEST_URI']);
-		return null;
+		if($type == 'string')
+
+			return $_SERVER['REQUEST_URI'];
+
+		else if($type == 'array')
+
+			return explode('/',$_SERVER['REQUEST_URI']);
 	}
 
 	public static function getUrl() {
 
-		return $_SERVER['REQUEST_URI'];
+		return $_SERVER['REQUEST_URL'];
 	}
 
 	public static function getMethod() {
