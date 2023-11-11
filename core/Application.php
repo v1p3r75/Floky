@@ -18,18 +18,21 @@ class Application
 
     public Route $routing;
 
-    public array $groupGroup = ["api", "web"];
+    public array $routesGroup = ["api", "web"];
+
+    public static string $root_dir;
 
     public static ?Application $instance = null;
 
-    private function __construct(public $root_dir = null) {
+    private function __construct(string $root_dir) {
 
+        self::$root_dir = $root_dir;
         $this->request = Request::getInstance();;
         $this->container = Container::getInstance();;
 
     }
 
-    public static function getInstance(string $root_dir = null) {
+    public static function getInstance(?string $root_dir) {
 
         if(!self::$instance) {
 
@@ -64,10 +67,30 @@ class Application
     public function run() {
 
         require(__DIR__ . "/helpers.php"); // load function helpers 
-        require($this->root_dir . "/routes/web.php");
-        require($this->root_dir . "/routes/api.php");
+
+        $this->loadAppRoutes();
 
         return Route::dispatch($this->request);
     }
 
+    public function loadAppRoutes(): void {
+
+        $path = app_routes_path();
+
+        foreach ($this->routesGroup as $group) {
+
+            $group_file = $path . $group. ".php";
+
+            if(file_exists($group_file)) {
+
+                require_once $group_file;
+            }
+        }
+        
+    }
+
+    public static function getAppDirectory() {
+
+        return self::$root_dir;
+    }
 }
