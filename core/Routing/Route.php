@@ -108,7 +108,7 @@ class Route
             }
         }
 
-        throw new NotFoundException('forRoute');
+        throw new NotFoundException('forPage');
     }
 
     public static function runCallback(array | Closure | callable $callback, array $params = []) {

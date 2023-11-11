@@ -26,8 +26,10 @@ class Application
     private function __construct(string $root_dir) {
 
         self::$root_dir = $root_dir;
-        $this->request = Request::getInstance();;
-        $this->container = Container::getInstance();;
+        set_exception_handler([$this, 'handleException']);
+        set_error_handler([$this, 'handleException']);
+        $this->request = Request::getInstance();
+        $this->container = Container::getInstance();
 
     }
 
@@ -111,5 +113,17 @@ class Application
         $blade = new BladeOne(app_view_path() , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
+    }
+
+    public function handleException (\Exception | \Error $err) {
+
+        $data = [
+            'name' => $err::class,
+            'file' => $err->getFile() . ':' . $err->getLine(),
+            'message' => $err->getMessage(),
+            'code' => $err->getCode()
+        ];
+
+        view('errors', $data);
     }
 }

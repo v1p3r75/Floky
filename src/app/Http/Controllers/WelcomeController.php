@@ -5,8 +5,8 @@ use Floky\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {
-    public function index($contact) {
+    public function index() {
 
-        echo "Welcome to floky " . $contact;
+        echo "Welcome to floky ";
     }
 }
