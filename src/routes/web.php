@@ -2,7 +2,11 @@
 
 use Floky\Routing\Route;
 
-Route::get('/', []);
-Route::post('/test', []);
-Route::post('/kali', []);
-Route::get('/service', []);
+Route::get('/', function() {
+    echo "home";
+});
+
+Route::get('/test/{id}', function($id) {
+
+    echo "hello " . $id;
+});
