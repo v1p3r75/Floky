@@ -3,11 +3,11 @@
 namespace Floky\Http\Middelwares;
 
 use Floky\Http\Requests\Request;
-use System\Http\Response;
+use Floky\Http\Responses\Response;
 
 interface MiddlewareInterface
 {
 
-    public function handle(Request $request, Response $response, \Closure $next);
+    public function handle(Request $request, \Closure $next);
     
 }

@@ -1,6 +1,4 @@
 <?php
-use Floky\Exceptions\NotFoundException;
-use System\Http\Response;
 
 function dump(...$vars): void
 {
@@ -9,10 +7,7 @@ function dump(...$vars): void
     echo "</pre>";
 
 }
-/**
- * Dump vars and exit
- * @param $vars
- */
+
 function dumpExit(...$vars): void
 {
     echo "<pre>";
@@ -22,17 +17,14 @@ function dumpExit(...$vars): void
 }
 
 
-/**
- * @param $var
- *
- */
 function secure($var) {
+
     if(is_array($var)) return $var;
 
     return htmlspecialchars($var, ENT_QUOTES);
 }
 
-function json(array $data) {
-
-    return Response::json($data);
-}
+// function response(int $code = 200): \Floky\Http\Responses\Response 
+// {
+//     return new \Floky\Http\Responses\Response($code);
+// }

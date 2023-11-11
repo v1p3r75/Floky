@@ -1,5 +1,5 @@
 <?php
-namespace System\Http;
+namespace Floky\Http\Responses;
 
 class Response {
 

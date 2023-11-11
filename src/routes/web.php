@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
+use Floky\Http\Requests\Request;
 use Floky\Routing\Route;
 
 Route::get('/', function() {
-    echo "home";
+   
+    echo "Welcome To Floky";
 });
 
-Route::get('/test/{id}', function($id) {
-
-    echo "hello " . $id;
-});
+Route::get('/contact/{id}', [WelcomeController::class, 'index']);

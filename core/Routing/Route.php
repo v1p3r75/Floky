@@ -2,6 +2,7 @@
 
 namespace Floky\Routing;
 
+use App\Http\Kernel;
 use Closure;
 use Floky\Exceptions\NotFoundException;
 use Floky\Exceptions\ParseErrorException;
@@ -61,6 +62,8 @@ class Route
         $uri = self::format_uri($uri);
 
         self::$routes[] = [$uri => ['methods' => $method, 'callback' => $callback]];
+
+        return new static;
     }
 
     public static function dispatch(Request $request)
@@ -98,6 +101,7 @@ class Route
                     $params[] = $matches[$i][0]; // List of parameters that will parse to function
 
                 }
+
 
                 return self::runCallback($route_callback, $params);
 
