@@ -2,6 +2,8 @@
 
 namespace Floky;
 
+use Floky\Container\Container;
+use Floky\Http\Requests\Request;
 use Floky\Routing\Route;
 
 class Application 
@@ -9,11 +11,16 @@ class Application
 
     public array $config = [];
 
+    public Container $container;
+
+    public Request $request;
+
     public Route $routing;
 
     public function __construct(public string $root_dir) {
 
-        $this->routing =new Route() ;
+        $this->container = new Container();
+        $this->request = new Request();
     }
 
     /**
@@ -25,24 +32,25 @@ class Application
 
     }
 
+    public function getService($name) {
+
+        return $this->container->get($name);
+    }
+
+    public function saveService($name, $new_instance) {
+
+        return $this->container->set($name, $new_instance);
+    }
+
     /**
      * Start a new application
      */
     public function run(): void {
 
-        require(__DIR__ . "/helpers.php");
-
-        $route = new Route();
-
-        $route2 = new Route();
-
-        $route->get('test1', []);
-        $route2->post('test2', []);
-        $route->patch('test3', []);
-        $route->put('test4', []);
-        $route->delete('test5', []);
-
-        $route->dispatch($_SERVER['REQUEST_URI']);
+        require(__DIR__ . "/helpers.php"); // load function helpers 
+        require($this->root_dir . "/routes/web.php");
+        require($this->root_dir . "/routes/api.php");
+        Route::dispatch($this->request);
 
     }
 

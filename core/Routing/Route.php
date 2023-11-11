@@ -2,18 +2,19 @@
 
 namespace Floky\Routing;
 
-use ArrayObject;
+use Closure;
 use Floky\Exceptions\NotFoundException;
 use Floky\Exceptions\ParseErrorException;
+use Floky\Http\Requests\Request;
 
 class Route
 {
 
     private ?Route $instance = null;
 
-    private array $routes = [];
+    private static array $routes = [];
 
-    public $methodsAllowed = ['get', 'post', 'put', 'patch', 'delete'];
+    public static array $verbs = ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
     public function __construct()
     {
@@ -32,79 +33,76 @@ class Route
         return $this->instance;
     }
 
-    private function methodIsCorrect(string $method = ''): bool
+    private static function methodIsCorrect(string $method = ''): bool
     {
 
-        return in_array(strtolower($method), $this->methodsAllowed);
+        return in_array(strtoupper($method), self::$verbs);
     }
 
-    public function get(string $uri, callable | array $callback): self
+    public static function get(string $uri, $callback)
     {
 
-        $this->add($uri, 'get', $callback);
+        return self::add($uri, ['GET', 'HEAD'], $callback);
 
-        return $this;
 
     }
-    public function post(string $uri, callable | array $callback): self
+    public static function post(string $uri, $callback)
     {
 
-        $this->add($uri, 'post', $callback);
+        return self::add($uri, ['POST'], $callback);
 
-        return $this;
     }
-    public function put(string $uri, callable | array $callback): self
+    public static function put(string $uri, $callback)
     {
 
-        $this->add($uri, 'put', $callback);
+        return self::add($uri, ['PUT'], $callback);
 
-        return $this;
     }
-    public function patch(string $uri, callable | array $callback): self
+    public static function patch(string $uri, $callback)
     {
 
-        $this->add($uri, 'patch', $callback);
+        return self::add($uri, ['PATCH'], $callback);
 
-        return $this;
     }
-    public function delete(string $uri, callable | array $callback): self
+    public static function delete(string $uri, $callback)
     {
 
-        $this->add($uri, 'delete', $callback);
+        return self::add($uri, ['DELETE'], $callback);
 
-        return $this;
     }
 
-
-    private function add(string $uri, string $method, $callback)
+    public static function match(array $methods, string $uri, $callback)
     {
 
-        if (! $this->methodIsCorrect($method)) {
+        return self::add($uri, $methods, $callback);
+
+    }
+
+
+    private static function add(string $uri, array $method, Closure | callable | array $callback)
+    {
+
+        self::$routes[] = [$uri => ['methods' => $method, 'callback' => $callback]];
+
+    }
+
+    public static function dispatch(Request $request): void
+    {
+
+        $method = $request->getMethod();
+
+        if (!self::methodIsCorrect($method)) {
 
             throw new ParseErrorException('forMethod');
         }
 
-        $this->routes[] = [$uri => ['method' => $method, 'callback' => $callback]];
-
-    }
-
-    public function dispatch(string $currentURI = ""): void
-    {
-
-        $method = strtolower($_SERVER['REQUEST_METHOD']);
-
-        if (!$this->methodIsCorrect($method)) {
-
-            throw new ParseErrorException('forMethod');
-        }
-
-        dump($this->routes);
+        dump(self::$routes);
 
         // throw new NotFoundException('forRoute');
     }
 
-    public function getAll(): array {
+    public static function getAll(): array {
 
-        return $this->routes;
+        return self::$routes;
     }
 }
