@@ -14,5 +14,8 @@
             "name": "v1p3r75",
             "email": "elfriedv16@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.3"
+    }
 }

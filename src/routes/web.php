@@ -6,6 +6,7 @@ use Floky\Routing\Route;
 
 Route::get('/', function() {
    
+    dump($_SERVER);
     echo "Welcome To Floky";
 });
 
