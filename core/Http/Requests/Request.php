@@ -4,6 +4,18 @@ namespace Floky\Http\Requests;
 
 class Request  {
     
+
+	public static ?Request $instance = null;
+
+	public static function getInstance() {
+
+        if(!self::$instance) {
+
+            self::$instance = new self;
+        }
+
+        return self::$instance;
+    }
     /**
 	 * Get Value from GET method
 	 * @

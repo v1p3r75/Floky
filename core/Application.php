@@ -4,6 +4,7 @@ namespace Floky;
 
 use Floky\Container\Container;
 use Floky\Http\Requests\Request;
+use Floky\Http\Responses\Response;
 use Floky\Routing\Route;
 
 class Application 
@@ -17,10 +18,25 @@ class Application
 
     public Route $routing;
 
-    public function __construct(public string $root_dir) {
+    public array $groupGroup = ["api", "web"];
 
-        $this->container = new Container();
-        $this->request = new Request();
+    public static ?Application $instance = null;
+
+    private function __construct(public $root_dir = null) {
+
+        $this->request = Request::getInstance();;
+        $this->container = Container::getInstance();;
+
+    }
+
+    public static function getInstance(string $root_dir = null) {
+
+        if(!self::$instance) {
+
+            self::$instance = new self($root_dir);
+        }
+
+        return self::$instance;
     }
 
     /**

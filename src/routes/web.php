@@ -9,4 +9,4 @@ Route::get('/', function() {
     echo "Welcome To Floky";
 });
 
-Route::get('/contact/{id}', [WelcomeController::class, 'index']);
+Route::get('/contact/{[A-Za-z]+}', [WelcomeController::class, 'index']);

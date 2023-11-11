@@ -3,64 +3,63 @@
 namespace Floky\Container;
 
 use Closure;
+use ReflectionClass;
 
 class Container
 {
-    public array $services = [];
+    private array $services = [];
+
+    private static ?Container $instance = null;
+
+    private function __construct() {}
+
+    public static function getInstance(): self {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     public function get($id)
     {
-        if (!isset($this->services[$id])) {
-
-            return $this->resolveDependencies($id);
+        if (isset($this->services[$id])) {
+            return $this->services[$id];
         }
+        return $this->resolveDependencies($id);
+    }
 
-        return $this->services[$id];
+    public function set($id, $definition)
+    {
+        if (isset($this->services[$id])) {
+            return false;
+        }
+        $this->services[$id] = $definition;
+        return true;
     }
 
     public function resolveDependencies($id)
     {
-
-        $reflection = new \ReflectionClass($id);
-
+        $reflection = new ReflectionClass($id);
         $constructor = $reflection->getConstructor();
 
+        if (!$constructor) {
+            return $reflection->newInstance();
+        }
 
-        $dependencies =  [];
+        $parameters = $constructor->getParameters();
+        $dependencies = [];
 
-        if ($constructor) {
+        foreach ($parameters as $parameter) {
+            $type = $parameter->getType();
 
-            $parameters = $constructor->getParameters();
-
-            foreach($parameters as $parameter) {
-
-                $type = $parameter->getType();
-
-                if (!$type->isBuiltin()) {
-
-                    $resolve_dependencies = $this->get($type->getName());
-
-                    $dependencies[] = $resolve_dependencies;
-                    // $this->services[] = $resolve_dependencies;
-
-                } else $dependencies[] = NULL;
+            if (!$type || $type->isBuiltin()) {
+                $dependencies[] = null;
+            } else {
+                $resolve_dependencies = $this->get($type->getName());
+                $dependencies[] = $resolve_dependencies;
             }
         }
 
-        $new_instance = $reflection->newInstanceArgs($dependencies);
-
-    }
-
-    public function set($id, $definition) {
-
-        if (isset($this->services[$id])) {
-
-            /**
-             *TODO: return service is present 
-             * */
-            return false;
-        }
-
-        return $this->services[$id] = $definition;
+        return $reflection->newInstanceArgs($dependencies);
     }
 }

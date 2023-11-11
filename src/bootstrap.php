@@ -2,6 +2,6 @@
 
 use Floky\Application;
 
-$app = new Application(__DIR__);
+$app = Application::getInstance(__DIR__);
 
 return $app->run();
