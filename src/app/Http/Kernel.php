@@ -2,19 +2,28 @@
 
 namespace App\Http;
 
-use App\Middlewares\Level1;
-use Floky\Http\HttpKernel;
+use App\Http\Middlewares\FirstMiddleware;
+use App\Http\Middlewares\SecondMiddleware;
+use Floky\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel
+return new class extends HttpKernel
 {
 
     protected array $middlewares = [
 
-        Level1::class,
+        FirstMiddleware::class,
+        SecondMiddleware::class,
     ];
 
     protected array $middlewaresByRoute = [
 
+        "api" => [
+            FirstMiddleware::class,
+        ],
+
+        "web" => [
+            FirstMiddleware::class
+        ],
     ];
 
     protected array $middlewaresAlias = [
@@ -22,4 +31,4 @@ class Kernel extends HttpKernel
 
     ];
 
-}
+};

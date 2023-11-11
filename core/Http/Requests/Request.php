@@ -7,6 +7,8 @@ class Request  {
 
 	public static ?Request $instance = null;
 
+	public array $attr = ['name' => 'test', 'password' => ''];
+
 	public static function getInstance() {
 
         if(!self::$instance) {

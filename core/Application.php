@@ -3,12 +3,14 @@
 namespace Floky;
 
 use Floky\Container\Container;
+use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
-use Floky\Http\Responses\Response;
 use Floky\Routing\Route;
 
 class Application 
 {
+
+    use Middlewares;
 
     public array $config = [];
 
@@ -64,15 +66,29 @@ class Application
     /**
      * Start a new application
      */
-    public function run() {
+    public function run () {
 
-        require(__DIR__ . "/helpers.php"); // load function helpers 
+        require(__DIR__ . "/Helpers.php"); // load function helpers
+
+        // Run all app middlewares before run current route
+
+        $appHttpKernel = app_http_path() . "Kernel.php";
+
+        $httpKernel = require($appHttpKernel);
+
+        $this->runMiddlewares($httpKernel->getAllMiddlewares(), Request::getInstance());
+
+        return $this->dispatch();
+    }
+
+    public function dispatch() {
 
         $this->loadAppRoutes();
 
         return Route::dispatch($this->request);
     }
 
+    
     public function loadAppRoutes(): void {
 
         $path = app_routes_path();

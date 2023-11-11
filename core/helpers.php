@@ -12,6 +12,12 @@ function app_routes_path(): string {
 
     return app_root_path() . "/routes/";
 }
+
+function app_http_path(): string {
+
+    return app_root_path() . "/app/Http/";
+}
+
 function secure($var) {
 
     if(is_array($var)) return $var;

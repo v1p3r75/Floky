@@ -7,7 +7,7 @@ use Floky\Exceptions\NotFoundException;
 use Floky\Http\Requests\Request;
 use Floky\Http\Responses\Response;
 
-class HttpKernel
+class Kernel
 {
 
     protected array $middlewares = [];
@@ -15,13 +15,8 @@ class HttpKernel
 
     protected array $middlewaresByRoute = [
 
-        "web" => [
-
-        ],
-
-        "api" => [
-
-        ]
+        "web" => [],
+        "api" => [],
     ];
 
     protected array $middlewaresAlias = [];
@@ -53,30 +48,4 @@ class HttpKernel
         return $this->middlewaresByRoute[$routeGroupName];
     }
 
-
-    public function runAppMiddlewares() {
-
-        foreach ($this->middlewares as $middleware) {
-
-            $class = new $middleware;
-
-            return $class->handle(new Request, function() {});
-        }
-    }
-    public function runMiddleware(string $middleware, ?string $group = null) {
-
-        // $middleware = $this->getMiddleware($middleware);
-
-        // $app = Application::getInstance();
-        
-        // $class = new $middleware;
-
-        // return $class->handle(
-
-        //     $app->getRequest(),
-        //     $app->getResponse(),
-
-        // );
-
-    }
 }
