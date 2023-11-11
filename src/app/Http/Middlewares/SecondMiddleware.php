@@ -8,7 +8,7 @@ class SecondMiddleware implements MiddlewareInterface
 {
     public function handle(Request $request): Request {
                 
-        dump($request);
+        dump($request->header()->get('Authorization'));
 
         return $request;
     }

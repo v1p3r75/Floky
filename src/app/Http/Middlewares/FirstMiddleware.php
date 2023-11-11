@@ -8,7 +8,7 @@ class FirstMiddleware implements MiddlewareInterface
 {
     public function handle(Request $request): Request {
                 
-        dump($request->attr);
+        dump($request->header()->set('Authorization', 'Bearer temsqkdmjfqkjfdmkj'));
         
         $request->attr = ['name' => 'others'];
 
