@@ -5,8 +5,8 @@ use Floky\Http\Requests\Request;
 use Floky\Routing\Route;
 
 Route::get('/', function() {
-    dump(Request::header()->getAll());
+
     echo "Welcome To Floky";
 });
 
-Route::get('/contact/{[A-Za-z]+}', [WelcomeController::class, 'index']);
+Route::get('/contact', [WelcomeController::class, 'index']);

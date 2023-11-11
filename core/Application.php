@@ -12,13 +12,9 @@ class Application
 
     use Middlewares;
 
-    public array $config = [];
-
     public Container $container;
 
     public Request $request;
-
-    public Route $routing;
 
     public array $routesGroup = ["api", "web"];
 
@@ -47,10 +43,9 @@ class Application
     /**
      * Save all applications services (middlewares, consoles, etc)
      */
-    public function save(array $config = []) {
+    public function saveAppServices() {
 
-        $this->config = $config;
-
+        //TODO: Register app services
     }
 
     public function getService($name) {
@@ -76,16 +71,16 @@ class Application
 
         $httpKernel = require($appHttpKernel);
 
-        $this->runMiddlewares($httpKernel->getAllMiddlewares(), Request::getInstance());
+        $request = $this->runMiddlewares($httpKernel->getAllMiddlewares(), $this->request);
 
-        return $this->dispatch();
+        return $this->dispatch($request);
     }
 
-    public function dispatch() {
+    public function dispatch(Request $request) {
 
         $this->loadAppRoutes();
 
-        return Route::dispatch($this->request);
+        return Route::dispatch($request);
     }
 
     

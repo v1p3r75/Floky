@@ -7,7 +7,7 @@ use Floky\Http\Requests\Request;
 trait Middlewares
 {
 
-    public function runMiddlewares(array $middlewares, Request $request) {
+    public function runMiddlewares(array $middlewares, Request $request): Request {
 
         if (count($middlewares) > 0) {
 
@@ -17,6 +17,8 @@ trait Middlewares
 
             $this->runMiddlewares(array_slice($middlewares, 1), $currentRequest);
         }
+
+        return $currentRequest ?? $request;
 
     }
 }
