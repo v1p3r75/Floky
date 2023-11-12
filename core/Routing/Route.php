@@ -122,7 +122,9 @@ class Route
 
             $method = $callback[1] ?? self::$defaultMethod;
 
-            return call_user_func_array([$controller, $method], $params);
+            $app->services()->getMethod($controller, $method, $params); // Get reflection & dependencies
+
+            // return call_user_func_array($closure, $params);
 
         } else if (is_callable($callback)) {
 

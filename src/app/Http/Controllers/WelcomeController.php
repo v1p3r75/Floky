@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 use Floky\Http\Controllers\Controller;
 use Floky\Http\Requests\Request;
+use Floky\Http\Responses\Response;
 
 class WelcomeController extends Controller
 {
 
-    // public function __construct(public Request $request) {}
+    public function index(Request $request, $id) {
 
-    public function index() {
-
-        echo "Welcome to floky ";
+        echo "Welcome to floky " . $id;
     }
 }

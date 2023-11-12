@@ -4,6 +4,7 @@ namespace Floky;
 
 use eftec\bladeone\BladeOne;
 use Error;
+use ErrorException;
 use Exception;
 use Floky\Container\Container;
 use Floky\Http\Middlewares\Middlewares;
@@ -29,7 +30,7 @@ class Application
 
         self::$root_dir = $root_dir;
         set_exception_handler([$this, 'handleException']);
-        set_error_handler([$this, 'handleException']);
+        set_error_handler([$this, 'handleError']);
         $this->request = Request::getInstance();
         $this->container = Container::getInstance();
 
@@ -62,6 +63,11 @@ class Application
      * Start a new application
      */
     public function run () {
+
+        $this->services()->set(Request::class, function() {
+
+            return Request::getInstance();
+        });
 
         require(__DIR__ . "/Helpers.php"); // load function helpers
 
@@ -112,8 +118,27 @@ class Application
         return $blade;
     }
 
+    public function handleError(
+        int $errno,
+        string $errstr,
+        string $errfile,
+        int $errline,
+    ): bool {
+
+        if (!(error_reporting() & $errno)) {
+            // This error code is not included in error_reporting, so let it fall
+            // through to the standard PHP error handler
+            return false;
+        }
+
+        throw new ErrorException(
+            secure($errstr), $errno, E_ERROR, $errfile, $errline, null
+        );        
+    }
+
     public function handleException ( Exception | Error $err) {
 
+        // if (is_int($err)) dd($err);
         $traces = $this->getCodePreview($err->getTrace());
 
         $data = [

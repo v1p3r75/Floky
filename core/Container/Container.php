@@ -4,6 +4,7 @@ namespace Floky\Container;
 
 use Closure;
 use ReflectionClass;
+use ReflectionMethod;
 
 class Container
 {
@@ -45,7 +46,7 @@ class Container
         return true;
     }
 
-    public function resolveDependencies($id)
+    private function resolveDependencies($id)
     {
         $reflection = new ReflectionClass($id);
 
@@ -57,6 +58,14 @@ class Container
         }
 
         $parameters = $constructor->getParameters();
+       
+        $dependencies =  $this->resolveParameters($reflection, $parameters);
+
+        return $reflection->newInstanceArgs($dependencies);
+    }
+
+    private function resolveParameters(ReflectionClass | ReflectionMethod $reflection, array $parameters): array {
+
         $dependencies = [];
 
         foreach ($parameters as $parameter) {
@@ -74,6 +83,43 @@ class Container
             }
         }
 
-        return $reflection->newInstanceArgs($dependencies);
+        return $dependencies;
+    }
+
+    public function getMethod($class, $name, ...$args) {
+
+        $reflection = new ReflectionMethod($class, $name);
+
+        $parameters = $reflection->getParameters();
+
+        $dependencies = $this->resolveParameters($reflection, $parameters);
+
+        $params = $this->addParams($dependencies, $args);
+        
+       return $reflection->invokeArgs($class, $params);
+    }
+
+    private function addParams(array $dependencies, $args): array {
+
+        $params = array_merge($dependencies, ...$args);
+
+        $dependencies = [];
+
+        foreach($params as $param) {
+
+            if (is_null($param)) {
+                continue;
+            }
+            $dependencies[] = $param;
+        }
+
+        return $dependencies;
+    }
+
+    private function getMethodWithDependencies(array $action) {
+
+        $class = $action[0] -> getClosure($action[1]);
+
+
     }
 }

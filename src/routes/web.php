@@ -9,4 +9,4 @@ Route::get('/', function() {
     return view('welcome', ['name' => 'Floky']);
 });
 
-Route::get('/contact', [WelcomeController::class, 'index']);
+Route::get('/contact/{id}', [WelcomeController::class, 'index']);
