@@ -2,13 +2,17 @@
 
 namespace Floky\Http\Requests;
 
-class Request {
-    
+use Floky\Http\Requests\Content\Header;
+
+class Request
+{
+
     public static ?Request $instance = null;
 
     public array $attr = ['name' => 'fucker', 'password' => ''];
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
 
         if (!self::$instance) {
             self::$instance = new self;
@@ -16,7 +20,8 @@ class Request {
         return self::$instance;
     }
 
-    public static function fromGet(string $key = null) {
+    public static function fromGet(string $key = null)
+    {
 
         if ($key !== null && isset($_GET[$key])) {
 
@@ -26,7 +31,8 @@ class Request {
         return secure($_GET);
     }
 
-    public static function fromPost(string $key = null) {
+    public static function fromPost(string $key = null)
+    {
 
         if ($key !== null && isset($_POST[$key])) {
 
@@ -36,7 +42,8 @@ class Request {
         return secure($_POST);
     }
 
-    public static function fromGetOnly(array $keys = []) {
+    public static function fromGetOnly(array $keys = [])
+    {
 
         $keyList = [];
         foreach ($keys as $key) {
@@ -49,7 +56,8 @@ class Request {
         return $keyList;
     }
 
-    public static function fromPostOnly(array $keys = []) {
+    public static function fromPostOnly(array $keys = [])
+    {
 
         $keyList = [];
         foreach ($keys as $key) {
@@ -62,37 +70,80 @@ class Request {
         return $keyList;
     }
 
-    public static function getUri(string $type = 'string') {
+    public static function getUri(string $type = 'string')
+    {
 
         if ($type === 'string') {
 
             return secure($_SERVER['REQUEST_URI']);
-
         } else if ($type === 'array') {
 
             return explode('/', secure($_SERVER['REQUEST_URI']));
         }
     }
 
-    public static function getUrl() {
+    public static function getUrl()
+    {
 
         return secure($_SERVER['REQUEST_URI']);
     }
 
-    public static function getMethod() {
+    public static function getMethod()
+    {
 
         return secure($_SERVER['REQUEST_METHOD']);
     }
 
-    public static function redirectTo($url = '') {
+    public static function redirectTo($url = '')
+    {
 
         header('Location: ' . $url);
         exit;
     }
 
-	
-	public static function header(): Header {
+    public static function isMethod(string $method)
+    {
+        return self::getMethod() === strtoupper($method);
+    }
 
-		return Header::getInstance();
-	}
+    public static function isGet()
+    {
+        return self::isMethod('GET');
+    }
+
+    public static function isPost()
+    {
+        return self::isMethod('POST');
+    }
+
+    public static function isPut()
+    {
+        return self::isMethod('PUT');
+    }
+
+    public static function isDelete()
+    {
+        return self::isMethod('DELETE');
+    }
+
+    public static function isPatch()
+    {
+        return self::isMethod('PATCH');
+    }
+
+    public static function isOptions()
+    {
+        return self::isMethod('OPTIONS');
+    }
+
+    public static function isHead()
+    {
+        return self::isMethod('HEAD');
+    }
+    
+    public static function header(): Header
+    {
+
+        return Header::getInstance();
+    }
 }

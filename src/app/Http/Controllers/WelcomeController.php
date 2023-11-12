@@ -10,6 +10,7 @@ class WelcomeController extends Controller
 
     public function index(Request $request, $id) {
 
+        dump($request->isPost());
         echo "Welcome to floky " . $id;
     }
 }
