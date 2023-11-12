@@ -111,9 +111,11 @@ class Application
         return self::$root_dir;
     }
 
-    public static function getBlade(): BladeOne {
+    public static function getBlade(bool $isResource = false): BladeOne {
 
-        $blade = new BladeOne(app_view_path() , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+        $path = $isResource ? app_resources_path() . "/templates" : app_view_path();
+
+        $blade = new BladeOne($path, app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
     }
@@ -138,7 +140,6 @@ class Application
 
     public function handleException ( Exception | Error $err) {
 
-        // if (is_int($err)) dd($err);
         $traces = $this->getCodePreview($err->getTrace());
 
         $data = [
@@ -150,7 +151,7 @@ class Application
             'previews' => $traces,
         ];
         
-        view('errors', $data);
+        view_resource('errors', $data);
     }
 
     private function getCodePreview(array $traceback) {

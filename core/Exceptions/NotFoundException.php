@@ -9,7 +9,7 @@ class NotFoundException extends \Exception
 
         if ($for == 'forPage') {
 
-            view('404');
+            view_resource('404');
             exit();
         }
         parent::__construct("Not Found Exception", $code);

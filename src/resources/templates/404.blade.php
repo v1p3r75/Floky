@@ -51,7 +51,6 @@
             display: inline-block;
             width: 140px;
             height: 140px;
-            background-image: url('/.asserts/emoji.png');
             background-size: cover;
         }
 
@@ -122,7 +121,9 @@
 
     <div id="notfound">
         <div class="notfound">
-            <div class="notfound-404"></div>
+            <div class="notfound-404">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 256 256" xml:space="preserve"><g transform="translate(1.41 1.41) scale(2.81 2.81)"><path d="M45 90C20.19 90 0 69.81 0 45 0 20.19 20.19 0 45 0c24.81 0 45 20.19 45 45C90 69.81 69.81 90 45 90zM45 4C22.39 4 4 22.39 4 45s18.39 41 41 41s41-18.39 41-41S67.61 4 45 4z" style="fill:#000" transform="matrix(1 0 0 1 0 0)"/><circle cx="30.34" cy="33.27" r="5.86" style="fill:#000" transform="matrix(1 0 0 1 0 0)"/><circle cx="59.66" cy="33.27" r="5.86" style="fill:#000" transform="matrix(1 0 0 1 0 0)"/><path d="M72.18 65.49c-0.44 0-0.89-0.15-1.26-0.45c-7.3-5.96-16.5-9.24-25.92-9.24c-9.42 0-18.62 3.28-25.92 9.24c-0.85 0.7-2.12 0.57-2.81-0.28c-0.7-0.86-0.57-2.12 0.28-2.81C24.56 55.4 34.66 51.8 45 51.8c10.34 0 20.44 3.6 28.45 10.15c0.85 0.7 0.98 1.96 0.28 2.81C73.34 65.24 72.76 65.49 72.18 65.49z" style="fill:#000" transform="matrix(1 0 0 1 0 0)"/></g></svg>
+            </div>
             <h1>404</h1>
             <h2>Oops! Page Not Be Found</h2>
             <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
