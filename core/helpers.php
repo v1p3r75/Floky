@@ -4,6 +4,89 @@ use Floky\Application;
 use Floky\Http\Responses\Response;
 use Floky\Routing\Route;
 
+/**
+ * Secure data to prevent cross-site scripting (XSS) attacks, supporting strings and arrays.
+ *
+ * @param array|string $data Data to be secured, can be a string or an array.
+ * @return array|string Secured data.
+ */
+
+function secure(array | string $data) {
+
+    if (is_array($data)) {
+
+        foreach ($data as $key => $value) {
+            
+            $data[$key] = secure($value);
+        }
+
+    } else {
+
+        $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+    }
+
+    return $data;
+}
+
+
+/**
+ * Render a view template using Blade with optional data to pass to the view.
+ *
+ * @param string $name The name of the view template.
+ * @param array $data Optional data to pass to the view.
+ * @return void
+ */
+
+function view(string $name, $data = [])
+{
+
+    $blade = Application::getBlade();
+
+    echo $blade->run($name, $data);
+
+}
+
+/**
+ * Render a resource view template using Blade with optional data to pass to the view.
+ *
+ * @param string $name The name of the resource view template.
+ * @param array $data Optional data to pass to the view.
+ * @return void
+ */
+function view_resource(string $name, $data = [])
+{
+
+    $blade = Application::getBlade(true);
+    echo $blade->run($name, $data);
+
+}
+
+/**
+ * Create a new HTTP response object.
+ *
+ * @return Response A new HTTP response object.
+ */
+function response() 
+{
+    return new Response();
+}
+
+
+/**
+ * Retrieve the URI associated with a named route.
+ *
+ * @param string $name The name of the route.
+ * @return string|null The URI of the named route, or `null` if the route does not exist.
+ */
+function route(string $name): string | null
+{
+    $route = Route::getRouteByName($name);
+    
+    return $route ? $route["uri"] : null;
+    
+}
+
+
 function app_root_path(string $path = "") {
 
     return Application::getAppDirectory() . $path;
@@ -65,51 +148,3 @@ function core_services_path(string $path = "") {
     return core_root_path("/Services/$path");
 }
 
-function secure(array | string $data) {
-
-    if (is_array($data)) {
-
-        foreach ($data as $key => $value) {
-            
-            $data[$key] = secure($value);
-        }
-
-    } else {
-
-        $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
-    }
-
-    return $data;
-}
-
-
-function view(string $name, $data = [])
-{
-
-    $blade = Application::getBlade();
-
-    echo $blade->run($name, $data);
-
-}
-
-function view_resource(string $name, $data = [])
-{
-
-    $blade = Application::getBlade(true);
-    echo $blade->run($name, $data);
-
-}
-
-
-function response(int $code = 200) 
-{
-    return new Response();
-}
-
-function route(string $name): string | null
-{
-    $route = Route::getRouteByName($name);
-    
-    return $route ? $route["uri"] : null;
-    
-}
