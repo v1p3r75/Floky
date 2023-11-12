@@ -19,6 +19,7 @@
         "symfony/var-dumper": "^6.3"
     },
     "require": {
-        "eftec/bladeone": "^4.9"
+        "eftec/bladeone": "^4.9",
+        "scrivo/highlight.php": "v9.18.1.10"
     }
 }

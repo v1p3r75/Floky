@@ -7,6 +7,6 @@ class WelcomeController extends Controller
 {
     public function index() {
 
-        echo "Welcome to floky ";
+        echo "Welcome to floky "
     }
 }

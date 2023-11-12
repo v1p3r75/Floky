@@ -51,7 +51,7 @@
             display: inline-block;
             width: 140px;
             height: 140px;
-            background-image: url('/emoji.png');
+            background-image: url('/.asserts/emoji.png');
             background-size: cover;
         }
 

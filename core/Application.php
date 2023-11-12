@@ -117,13 +117,46 @@ class Application
 
     public function handleException (\Exception | \Error $err) {
 
+        $traces = $this->getCodePreview($err->getTrace());
+
         $data = [
             'name' => $err::class,
-            'file' => $err->getFile() . ':' . $err->getLine(),
+            'file' => $err->getFile(),
+            'line' => $err->getLine(),
             'message' => $err->getMessage(),
-            'code' => $err->getCode()
+            'code' => $err->getCode(),
+            'previews' => $traces,
         ];
-
+        
         view('errors', $data);
+    }
+
+    private function getCodePreview(array $traceback) {
+
+        $hl = new \Highlight\Highlighter();
+
+        $traces = [];
+
+        foreach($traceback as $trace) {
+
+            $code = $this->getPreview($trace);
+
+            $content = $hl->highlight('php', $code);
+            $content->filename = $trace['file'];
+
+            $traces[] = $content;
+        }
+
+        return $traces;
+    }
+
+    private function getPreview($trace) {
+
+        $lines = file($trace['file']);
+        $start = max(0, $trace['line'] - 5);
+        $end = min(count($lines), $trace['line'] + 5);
+        $codePreview = array_slice($lines, $start, $end - $start);
+
+        return implode("", $codePreview);
     }
 }
