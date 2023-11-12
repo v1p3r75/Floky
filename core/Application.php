@@ -52,7 +52,7 @@ class Application
     /**
      * Save all applications services (middlewares, consoles, etc)
      */
-    public function saveAppServices(array $services) {
+    private function saveAppServices(array $services) {
 
         foreach($services as $service) {
 
@@ -72,6 +72,31 @@ class Application
 
         require(__DIR__ . "/Helpers.php"); // load function helpers
 
+        $services = $this->getAllServices();
+
+        $this->saveAppServices($services);
+
+        // Run all app middlewares before run current route
+
+        $httpKernel = $this->getHttpKernel();
+
+        $request = $this->runMiddlewares($httpKernel->getAllMiddlewares(), $this->request);
+
+        return $this->dispatch($request);
+    }
+
+    
+    private function dispatch(Request $request) {
+
+        $this->loadAppRoutes();
+
+        return Route::dispatch($request);
+    }
+
+
+    public function getAllServices(): array
+    {
+
         $servicesKernelPath = core_services_path("Kernel.php");
 
         $appServicesPath = app_services_path("Kernel.php");
@@ -80,30 +105,21 @@ class Application
         
         $servicesKernel = require($servicesKernelPath);
 
-        $this->saveAppServices([...$servicesKernel, ...$appServices]);
+        return [...$servicesKernel, ...$appServices];
+    }
 
-        // Run all app middlewares before run current route
-
+    public function getHttpKernel()
+    {
         $appHttpKernel = app_http_path("Kernel.php");
 
         $appHttpKernel = app_http_path("Kernel.php");
 
         $httpKernel = require($appHttpKernel);
 
-        $request = $this->runMiddlewares($httpKernel->getAllMiddlewares(), $this->request);
-
-        return $this->dispatch($request);
+        return $httpKernel;
     }
-
-    public function dispatch(Request $request) {
-
-        $this->loadAppRoutes();
-
-        return Route::dispatch($request);
-    }
-
     
-    public function loadAppRoutes(): void {
+    private function loadAppRoutes(): void {
 
         $path = app_routes_path();
 
@@ -126,20 +142,15 @@ class Application
 
     public static function getBlade(bool $isResource = false): BladeOne {
 
-        $path = $isResource ? app_resources_path() . "/templates" : app_view_path();
+        $path = $isResource ? app_resources_path() : app_view_path();
 
         $blade = new BladeOne($path , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
     }
 
-    public function handleError(
-        int $errno,
-        string $errstr,
-        string $errfile,
-        int $errline,
-    ): bool {
-
+    private function handleError(int $errno, string $errstr , string $errfile, int $errline): bool
+    {
         if (!(error_reporting() & $errno)) {
             // This error code is not included in error_reporting, so let it fall
             // through to the standard PHP error handler
@@ -151,7 +162,7 @@ class Application
         );        
     }
 
-    public function handleException ( Exception | Error $err) {
+    private function handleException ( Exception | Error $err) {
 
         $traces = $this->getCodePreview($err->getTrace());
 
@@ -164,7 +175,7 @@ class Application
             'previews' => $traces,
         ];
         
-        view_resource('errors', $data);
+        view_resource('templates.errors', $data);
     }
 
     private function getCodePreview(array $traceback) {

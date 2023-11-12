@@ -49,9 +49,9 @@ function app_storage_path(string $path = "") {
 
 }
 
-function app_routes_path() {
+function app_routes_path(string $path = "") {
 
-    return app_root_path() . "/routes/";
+    return app_root_path("/routes/$path");
 }
 
 function core_root_path(string $path = '') {
