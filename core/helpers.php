@@ -87,6 +87,12 @@ function route(string $name): string | null
 }
 
 
+function env(string $key, string $default = null) {
+
+    return isset($_ENV[$key]) ? $_ENV[$key] : $default;
+
+}
+
 function app_root_path(string $path = "") {
 
     return Application::getAppDirectory() . $path;

@@ -2,6 +2,7 @@
 
 namespace Floky;
 
+use Dotenv\Dotenv;
 use eftec\bladeone\BladeOne;
 use Error;
 use ErrorException;
@@ -32,8 +33,13 @@ class Application
 
         self::$root_dir = $root_dir;
         self::$core_dir = __DIR__;
+
         set_exception_handler([$this, 'handleException']);
         set_error_handler([$this, 'handleError']);
+
+        $dotenv = Dotenv::createImmutable(dirname(self::$root_dir));
+        $dotenv->safeLoad();
+
         $this->request = Request::getInstance();
         $this->container = Container::getInstance();
 
