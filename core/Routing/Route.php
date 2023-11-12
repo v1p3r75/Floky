@@ -22,8 +22,18 @@ class Route
     public static array $verbs = ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
 
-    private static function methodIsCorrect(string $method = ''): bool
+    private static function methodIsCorrect(string | array $method = ''): bool
     {
+        if (is_array($method)) {
+
+            foreach($method as $value) {
+
+                if (! in_array(strtoupper($value), self::$verbs)) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         return in_array(strtoupper($method), self::$verbs);
     }
@@ -54,6 +64,12 @@ class Route
         return self::add($uri, ['DELETE'], $callback);
     }
 
+    public static function options(string $uri, $callback)
+    {
+
+        return self::add($uri, ['OPTIONS'], $callback);
+    }
+
     public static function match(array $methods, string $uri, $callback)
     {
 
@@ -69,6 +85,11 @@ class Route
 
     private static function add(string $uri, array $method, Closure | callable | array $callback)
     {
+
+        if (!self::methodIsCorrect($method)) {
+
+            throw new ParseErrorException("Route does not support " . implode(",", $method) . " method");
+        }
 
         $uri = self::format_uri($uri);
 
@@ -86,7 +107,7 @@ class Route
 
         if (!self::methodIsCorrect($method)) {
 
-            throw new ParseErrorException('Method Not Supported');
+            throw new ParseErrorException("Route does not support '$method'  method");
         }
 
         foreach (self::$routes as $route) {
@@ -103,7 +124,7 @@ class Route
 
                 if (!in_array($method, $route_methods)) { // Bad route method
 
-                    throw new ParseErrorException("The " . $route['uri']. " route does not support the '$method' method but: " . implode(",", $route_methods) );
+                    throw new ParseErrorException("The '" . $route['uri']. "' route does not support the '$method' method but: " . implode(",", $route_methods) );
                 }
 
                 $params = [];

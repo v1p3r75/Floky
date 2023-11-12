@@ -5,9 +5,9 @@ namespace Floky\Exceptions;
 class ParseErrorException extends \Exception
 {
 
-    public function __construct($for = "", $code = 400) {
+    public function __construct($msg = "", $code = 4000) {
 
         
-        parent::__construct("Parse Error Exception", $code);
+        parent::__construct($msg, $code);
     }
 }
