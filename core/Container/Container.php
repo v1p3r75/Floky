@@ -95,8 +95,18 @@ class Container
         $dependencies = $this->resolveParameters($reflection, $parameters);
 
         $params = $this->addParams($dependencies, $args);
+
+        /**TODO: Don't add parameters if $args is null */
         
-       return $reflection->invokeArgs($class, $params);
+        return [$reflection, $class, $params];
+
+    }
+
+    public function runMethod(array $reflection_data) {
+
+        /**Example $reflection_data = [$reflection, $class, $params];*/
+        
+        return $reflection_data[0]->invokeArgs($reflection_data[1], $reflection_data[2]);
     }
 
     private function addParams(array $dependencies, $args): array {
@@ -116,10 +126,4 @@ class Container
         return $dependencies;
     }
 
-    private function getMethodWithDependencies(array $action) {
-
-        $class = $action[0] -> getClosure($action[1]);
-
-
-    }
 }
