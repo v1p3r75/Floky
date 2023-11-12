@@ -128,7 +128,9 @@ class Route
 
         } else if (is_callable($callback)) {
 
-            return call_user_func_array($callback, $params);
+            $resolved_callback = $app->services()->resolveFunction($callback, $params);
+            
+            return call_user_func_array($resolved_callback[0], $resolved_callback[1]);
         }
     }
 

@@ -4,6 +4,7 @@ namespace Floky\Container;
 
 use Closure;
 use ReflectionClass;
+use ReflectionFunction;
 use ReflectionMethod;
 
 class Container
@@ -64,7 +65,7 @@ class Container
         return $reflection->newInstanceArgs($dependencies);
     }
 
-    private function resolveParameters(ReflectionClass | ReflectionMethod $reflection, array $parameters): array {
+    private function resolveParameters(ReflectionClass | ReflectionMethod | ReflectionFunction $reflection, array $parameters): array {
 
         $dependencies = [];
 
@@ -99,6 +100,20 @@ class Container
         /**TODO: Don't add parameters if $args is null */
         
         return [$reflection, $class, $params];
+
+    }
+
+    public function resolveFunction(Closure | callable $function, ...$args) {
+
+        $reflection = new ReflectionFunction($function);
+
+        $parameters = $reflection->getParameters();
+
+        $dependencies = $this->resolveParameters($reflection, $parameters);
+
+        $params = $this->addParams($dependencies, $args);
+
+        return [$reflection->getClosure(), $params];
 
     }
 
