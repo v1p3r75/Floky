@@ -60,9 +60,10 @@ class Route
 
     private static function add(string $uri, array $method, Closure | callable | array $callback)
     {
+
         $uri = self::format_uri($uri);
 
-        self::$routes[] = [$uri => ['methods' => $method, 'callback' => $callback]];
+        self::$routes[] = ['uri' => $uri, 'methods' => $method, 'callback' => $callback];
 
         return new static;
     }
@@ -81,15 +82,15 @@ class Route
 
         foreach (self::$routes as $route) {
 
-            $current_route = array_key_first($route);
+            $current_route = $route['uri'];
 
             $routeRegex = "@^" . preg_replace_callback("/{(\w+)(:[^}]+)?}/", fn ($m) => isset($m[2]) ? "({$m[2]})" : "(\w+)", $current_route) . "(\\?.*)?$@";
 
             if (preg_match_all($routeRegex, $current_uri, $matches)) {
 
-                $route_methods = $route[$current_route]['methods'];
+                $route_methods = $route['methods'];
 
-                $route_callback = $route[$current_route]['callback'];
+                $route_callback = $route['callback'];
 
                 if (!in_array($method, $route_methods)) { // Bad route method
 
@@ -134,15 +135,49 @@ class Route
         }
     }
 
-    public static function format_uri(string $uri) {
+    public static function middlewares(array $middlewares = [])
+    {
+        
+        $route_index = self::getCurrentRoute();
+
+        self::addRouteData($route_index, 'middlewares', $middlewares);
+
+        return new static;
+    }
+
+    public static function name(string $name)
+    {
+        $route_index = self::getCurrentRoute();
+
+        self::addRouteData($route_index, 'name', $name);
+
+        return new static;
+    }
+
+    private static function format_uri(string $uri) {
 
         return trim($uri, "/");
     }
 
     public static function getAll(): array
     {
-
         return self::$routes;
+    }
+
+    private static function getCurrentRoute() {
+
+        $route = end(self::$routes);
+        $position = array_keys(self::$routes, $route);
+        
+        return implode(', ', $position);
+    }
+
+    private static function addRouteData(int $index, string $key, $payload)
+    {
+
+        self::$routes[$index][$key] = $payload;
+
+        return true;
     }
 
 }

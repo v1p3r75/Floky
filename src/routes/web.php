@@ -7,6 +7,7 @@ use Floky\Routing\Route;
 Route::get('/', function(Request $request) {
 
     return view('welcome', ['name' => 'Floky']);
-});
 
-Route::get('/contact/{id}', [WelcomeController::class, 'index']);
+})->name('home');
+
+Route::get('/contact/{id}', [WelcomeController::class, 'index'])->name('mouse');

@@ -149,7 +149,7 @@ class Application
         return $blade;
     }
 
-    private function handleError(int $errno, string $errstr , string $errfile, int $errline): bool
+    public function handleError(int $errno, string $errstr , string $errfile, int $errline): bool
     {
         if (!(error_reporting() & $errno)) {
             // This error code is not included in error_reporting, so let it fall
@@ -162,8 +162,13 @@ class Application
         );        
     }
 
-    private function handleException ( Exception | Error $err) {
+    public function handleException ( Exception | Error $err) {
 
+        if ($err->getCode() === 404) {
+
+            return view_resource('templates.404');
+        }
+        
         $traces = $this->getCodePreview($err->getTrace());
 
         $data = [
