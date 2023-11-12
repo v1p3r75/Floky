@@ -68,6 +68,8 @@
             scrollbar-color: white blue;
             border-radius: 10px;
             display: flex;
+            flex-wrap: wrap;
+            overflow-x: auto;
         }
 
         summary {
@@ -93,7 +95,7 @@
             <div style="width: 20%; margin-right: 20px; color:white">
                 <img src="/.asserts/sad-emoji.png" alt="wrong" style="width: 100%; height: 100%">
             </div>
-            <div style="align-self: center">
+            <div style="align-self: center; width: 78%">
                 <h2 title="Exception Name">{{ $name }}</h2>
                 <h3 title="Exception file">Message : {{ $message }}</h3>
                 <h3 title="Exception Code">

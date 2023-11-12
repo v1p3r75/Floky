@@ -33,14 +33,14 @@ class Container
         return $this->resolveDependencies($id);
     }
 
-    public function set($id, $definition)
+    public function set($id, callable $definition)
     {
         if (isset($this->services[$id])) {
 
             return false;
         }
 
-        $this->services[$id] = $definition;
+        $this->services[$id] = $definition();
 
         return true;
     }

@@ -3,6 +3,8 @@
 namespace Floky;
 
 use eftec\bladeone\BladeOne;
+use Error;
+use Exception;
 use Floky\Container\Container;
 use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
@@ -110,7 +112,7 @@ class Application
         return $blade;
     }
 
-    public function handleException ( $err) {
+    public function handleException ( Exception | Error $err) {
 
         $traces = $this->getCodePreview($err->getTrace());
 
@@ -134,12 +136,13 @@ class Application
 
         foreach($traceback as $trace) {
 
-            $code = $this->getPreview($trace);
+            if ($code = $this->getPreview($trace)) {
 
-            $content = $hl->highlight('php', $code);
-            $content->filename = $trace['file'];
+                $content = $hl->highlight('php', $code);
+                $content->filename = $trace['file'];
 
-            $traces[] = $content;
+                $traces[] = $content;
+            }
         }
 
         return $traces;
@@ -147,6 +150,7 @@ class Application
 
     private function getPreview($trace) {
 
+        if (! isset($trace["file"])) return false;
         $lines = file($trace['file']);
         $start = max(0, $trace['line'] - 5);
         $end = min(count($lines), $trace['line'] + 5);

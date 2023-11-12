@@ -19,6 +19,12 @@ function app_http_path(): string {
     return app_root_path() . "/app/Http/";
 }
 
+function app_services_path(): string {
+
+    return app_root_path() . "/app/Services/";
+
+}
+
 function app_view_path(): string {
 
     return app_root_path() . "/views";
