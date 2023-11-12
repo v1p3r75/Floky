@@ -78,7 +78,7 @@ class Application
 
         // Run all app middlewares before run current route
 
-        $httpKernel = $this->getHttpKernel();
+        $httpKernel = self::getHttpKernel();
 
         $request = $this->runMiddlewares($httpKernel->getAllMiddlewares(), $this->request);
 
@@ -108,7 +108,7 @@ class Application
         return [...$servicesKernel, ...$appServices];
     }
 
-    public function getHttpKernel()
+    public static function getHttpKernel()
     {
         $appHttpKernel = app_http_path("Kernel.php");
 

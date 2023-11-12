@@ -7,10 +7,13 @@ use Closure;
 use Floky\Application;
 use Floky\Exceptions\NotFoundException;
 use Floky\Exceptions\ParseErrorException;
+use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
 
 class Route
 {
+
+    use Middlewares;
 
     private static array $routes = [];
 
@@ -57,6 +60,12 @@ class Route
         return self::add($uri, $methods, $callback);
     }
 
+    public static function any(string $uri, $callback)
+    {
+
+        return self::add($uri, self::$routes, $callback);
+    }
+
 
     private static function add(string $uri, array $method, Closure | callable | array $callback)
     {
@@ -77,7 +86,7 @@ class Route
 
         if (!self::methodIsCorrect($method)) {
 
-            throw new ParseErrorException('forMethod');
+            throw new ParseErrorException('Method Not Supported');
         }
 
         foreach (self::$routes as $route) {
@@ -94,7 +103,7 @@ class Route
 
                 if (!in_array($method, $route_methods)) { // Bad route method
 
-                    throw new ParseErrorException('forBadMethod');
+                    throw new ParseErrorException("The " . $route['uri']. " route does not support the '$method' method but: " . implode(",", $route_methods) );
                 }
 
                 $params = [];
@@ -104,13 +113,20 @@ class Route
 
                 }
 
+                if(isset($route['middlewares'])) {
+
+                    $route_middlewares = self::getMiddlewareArray($route['middlewares']);
+
+                    self::runMiddlewares($route_middlewares, $request);
+
+                }
 
                 return self::runCallback($route_callback, $params);
 
             }
         }
 
-        throw new NotFoundException('forPage');
+        throw new NotFoundException('Page Not found', 404);
     }
 
     public static function runCallback(array | Closure | callable $callback, array $params = []) {

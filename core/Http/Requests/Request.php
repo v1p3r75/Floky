@@ -12,7 +12,7 @@ class Request
 
     public static ?Request $instance = null;
 
-    public array $attr = ['name' => 'fucker', 'password' => ''];
+    public string $attr = "start"; /* Just for middlewares testing */
 
     public static function getInstance()
     {

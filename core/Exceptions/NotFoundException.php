@@ -5,8 +5,8 @@ namespace Floky\Exceptions;
 class NotFoundException extends \Exception
 {
 
-    public function __construct($for = "", $code = 404) {
+    public function __construct($msg = "", $code = 4004) {
 
-        parent::__construct("Not Found Exception", $code);
+        parent::__construct($msg, $code);
     }
 }

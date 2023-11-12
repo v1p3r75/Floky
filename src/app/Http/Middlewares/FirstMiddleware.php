@@ -8,7 +8,7 @@ class FirstMiddleware implements MiddlewareInterface
 {
     public function handle(Request $request): Request {
 
-        $request->attr = ['changed'];
+        $request->attr .= ' 1';
         return $request;
     }
 }

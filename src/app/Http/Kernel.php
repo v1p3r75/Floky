@@ -9,10 +9,9 @@ use Floky\Http\Kernel as HttpKernel;
 return new class extends HttpKernel
 {
 
+    
     protected array $middlewares = [
 
-        FirstMiddleware::class,
-        SecondMiddleware::class,
     ];
 
     protected array $middlewaresByRoute = [
@@ -28,7 +27,8 @@ return new class extends HttpKernel
 
     protected array $middlewaresAlias = [
 
-
+        'first' => FirstMiddleware::class,
+        'second' => SecondMiddleware::class,
     ];
 
 };

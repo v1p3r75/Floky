@@ -31,7 +31,7 @@ class Kernel
 
         if (! isset($this->middlewaresAlias[$name])) {
 
-            throw new NotFoundException('forMiddleware');
+            throw new NotFoundException("'$name' Middleware was not found !");
         }
 
         return $this->middlewaresAlias[$name];
@@ -42,7 +42,7 @@ class Kernel
 
         if (! isset($this->middlewaresByRoute[$routeGroupName])) {
 
-            throw new NotFoundException('forRouteGroup');
+            throw new NotFoundException("'$routeGroupName' does not exist");
         }
 
         return $this->middlewaresByRoute[$routeGroupName];
