@@ -2,10 +2,13 @@
 
 namespace Floky\Http\Requests;
 
+use Floky\Http\Requests\Content\Files;
 use Floky\Http\Requests\Content\Header;
 
 class Request
 {
+    
+    use Files;
 
     public static ?Request $instance = null;
 
