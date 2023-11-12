@@ -4,6 +4,7 @@ namespace Floky\Routing;
 
 use App\Http\Kernel;
 use Closure;
+use Floky\Application;
 use Floky\Exceptions\NotFoundException;
 use Floky\Exceptions\ParseErrorException;
 use Floky\Http\Requests\Request;
@@ -113,9 +114,11 @@ class Route
 
     public static function runCallback(array | Closure | callable $callback, array $params = []) {
 
+        $app = Application::getInstance();
+
         if (is_array($callback)) { 
 
-            $controller = new $callback[0]();
+            $controller = $app->services()->get($callback[0]);
 
             $method = $callback[1] ?? self::$defaultMethod;
 

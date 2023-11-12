@@ -33,7 +33,7 @@ class Application
 
     }
 
-    public static function getInstance(?string $root_dir) {
+    public static function getInstance(?string $root_dir = null) {
 
         if(!self::$instance) {
 
@@ -51,14 +51,9 @@ class Application
         //TODO: Register app services
     }
 
-    public function getService($name) {
+    public function services(): Container {
 
-        return $this->container->get($name);
-    }
-
-    public function saveService($name, $new_instance) {
-
-        return $this->container->set($name, $new_instance);
+        return $this->container;
     }
 
     /**
@@ -115,7 +110,7 @@ class Application
         return $blade;
     }
 
-    public function handleException (\Exception | \Error $err) {
+    public function handleException ( $err) {
 
         $traces = $this->getCodePreview($err->getTrace());
 
