@@ -196,4 +196,17 @@ class Route
         return true;
     }
 
+    public static function getRouteByName(string $name) {
+
+        foreach(self::$routes as $route) {
+
+            if (isset($route['name']) && $route['name'] == $name) {
+
+                return $route;
+            }
+        }
+        
+        return null;
+    }
+
 }

@@ -2,6 +2,7 @@
 
 use Floky\Application;
 use Floky\Http\Responses\Response;
+use Floky\Routing\Route;
 
 function app_root_path(string $path = "") {
 
@@ -103,4 +104,12 @@ function view_resource(string $name, $data = [])
 function response(int $code = 200) 
 {
     return new Response();
+}
+
+function route(string $name): string | null
+{
+    $route = Route::getRouteByName($name);
+    
+    return $route ? $route["uri"] : null;
+    
 }
