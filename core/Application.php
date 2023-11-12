@@ -24,11 +24,14 @@ class Application
 
     public static string $root_dir;
 
+    public static string $core_dir;
+
     public static ?Application $instance = null;
 
     private function __construct(string $root_dir) {
 
         self::$root_dir = $root_dir;
+        self::$core_dir = __DIR__;
         set_exception_handler([$this, 'handleException']);
         set_error_handler([$this, 'handleError']);
         $this->request = Request::getInstance();
@@ -49,9 +52,12 @@ class Application
     /**
      * Save all applications services (middlewares, consoles, etc)
      */
-    public function saveAppServices() {
+    public function saveAppServices(array $services) {
 
-        //TODO: Register app services
+        foreach($services as $service) {
+
+            (new $service)->register();
+        }
     }
 
     public function services(): Container {
@@ -64,16 +70,23 @@ class Application
      */
     public function run () {
 
-        $this->services()->set(Request::class, function() {
-
-            return Request::getInstance();
-        });
-
         require(__DIR__ . "/Helpers.php"); // load function helpers
+
+        $servicesKernelPath = core_services_path("Kernel.php");
+
+        $appServicesPath = app_services_path("Kernel.php");
+        
+        $appServices = require($appServicesPath);
+        
+        $servicesKernel = require($servicesKernelPath);
+
+        $this->saveAppServices([...$servicesKernel, ...$appServices]);
 
         // Run all app middlewares before run current route
 
-        $appHttpKernel = app_http_path() . "Kernel.php";
+        $appHttpKernel = app_http_path("Kernel.php");
+
+        $appHttpKernel = app_http_path("Kernel.php");
 
         $httpKernel = require($appHttpKernel);
 
@@ -115,7 +128,7 @@ class Application
 
         $path = $isResource ? app_resources_path() . "/templates" : app_view_path();
 
-        $blade = new BladeOne($path, app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+        $blade = new BladeOne($path , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
     }

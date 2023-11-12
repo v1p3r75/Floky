@@ -3,55 +3,65 @@
 use Floky\Application;
 use Floky\Http\Responses\Response;
 
-function app_root_path(): string {
+function app_root_path(string $path = "") {
 
-    return Application::getAppDirectory();
+    return Application::getAppDirectory() . $path;
 
 }
 
-function app_path(): string {
+function app_path(string $path = "") {
 
-    return app_root_path() . '/app/';
+    return app_root_path("/app/$path");
 }
 
-function app_routes_path(): string {
+function app_http_path(string $path = "") {
+
+    return app_path("Http/$path");
+}
+
+function app_services_path(string $path = "") {
+
+    return app_path("Services/$path");
+
+}
+
+function app_view_path(string $path = "") {
+
+    return app_root_path("/views/$path");
+
+}
+
+function app_resources_path(string $path = "") {
+
+    return app_root_path("/resources/$path");
+
+}
+
+function app_cache_path(string $path = "") {
+
+    return app_root_path("/cache/$path");
+
+}
+
+function app_storage_path(string $path = "") {
+
+    return app_root_path("/storage/$path");
+
+}
+
+function app_routes_path() {
 
     return app_root_path() . "/routes/";
 }
 
-function app_http_path(): string {
+function core_root_path(string $path = '') {
 
-    return app_path() . "Http/";
+    return Application::$core_dir . $path;
 }
 
-function app_services_path(): string {
+function core_services_path(string $path = "") {
 
-    return app_path() . "Services/";
-
-}
-
-function app_view_path(): string {
-
-    return app_root_path() . "/views";
-
-}
-
-function app_resources_path(): string {
-
-    return app_root_path() . "/resources";
-
-}
-
-function app_cache_path(): string {
-
-    return app_root_path() . "/cache";
-
-}
-
-function app_storage_path(): string {
-
-    return app_root_path() . "/storage";
-
+    return core_root_path("/Services/$path");
 }
 
 function secure(array | string $data) {
