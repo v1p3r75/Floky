@@ -83,7 +83,7 @@ class Route
 
             $current_route = array_key_first($route);
 
-            $routeRegex = "@^" . preg_replace_callback("/{(\w+)(:[^}]+)?}/", fn ($m) => isset($m[2]) ? "({$m[2]})" : "(\w+)", $current_route) . "$@";
+            $routeRegex = "@^" . preg_replace_callback("/{(\w+)(:[^}]+)?}/", fn ($m) => isset($m[2]) ? "({$m[2]})" : "(\w+)", $current_route) . "(\\?.*)?$@";
 
             if (preg_match_all($routeRegex, $current_uri, $matches)) {
 
