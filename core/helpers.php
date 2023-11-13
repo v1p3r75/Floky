@@ -93,6 +93,40 @@ function env(string $key, string $default = null) {
 
 }
 
+function config(string $file) {
+
+    $file = $file . ".php";
+    $config_files = get_directory_files(app_config_path());
+
+    if (array_key_exists($file, $config_files)) {
+
+        return require $config_files[$file];
+    }
+
+    return [];
+}
+
+function get_directory_files(string $dir): array {
+    
+    $files = [];
+
+    $content = scandir($dir);
+
+    if ($content) {
+
+        foreach($content as $value) {
+            $path = $dir . $value;
+            if(is_file($path)) {
+
+                $files[$value] = $path;
+            }
+        }
+
+    }
+
+    return $files;
+}
+
 function app_root_path(string $path = "") {
 
     return Application::getAppDirectory() . $path;
@@ -124,6 +158,12 @@ function app_view_path(string $path = "") {
 function app_resources_path(string $path = "") {
 
     return app_root_path("/resources/$path");
+
+}
+
+function app_config_path(string $path = "") {
+
+    return app_root_path("/config/$path");
 
 }
 

@@ -12,7 +12,7 @@ use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
 use Floky\Routing\Route;
 
-class Application 
+class Application
 {
 
     use Middlewares;
@@ -29,7 +29,8 @@ class Application
 
     public static ?Application $instance = null;
 
-    private function __construct(string $root_dir) {
+    private function __construct(string $root_dir)
+    {
 
         self::$root_dir = $root_dir;
         self::$core_dir = __DIR__;
@@ -45,9 +46,16 @@ class Application
 
     }
 
-    public static function getInstance(?string $root_dir = null) {
+    static function sendMail()
+    {
 
-        if(!self::$instance) {
+        
+    }
+
+    public static function getInstance(?string $root_dir = null)
+    {
+
+        if (!self::$instance) {
 
             self::$instance = new self($root_dir);
         }
@@ -58,15 +66,17 @@ class Application
     /**
      * Save all applications services (middlewares, consoles, etc)
      */
-    private function saveAppServices(array $services) {
+    private function saveAppServices(array $services)
+    {
 
-        foreach($services as $service) {
+        foreach ($services as $service) {
 
             (new $service)->register();
         }
     }
 
-    public function services(): Container {
+    public function services(): Container
+    {
 
         return $this->container;
     }
@@ -74,7 +84,8 @@ class Application
     /**
      * Start a new application
      */
-    public function run () {
+    public function run()
+    {
 
         require(__DIR__ . "/Helpers.php"); // load function helpers
 
@@ -91,8 +102,9 @@ class Application
         return $this->dispatch($request);
     }
 
-    
-    private function dispatch(Request $request) {
+
+    private function dispatch(Request $request)
+    {
 
         $this->loadAppRoutes();
 
@@ -106,9 +118,9 @@ class Application
         $servicesKernelPath = core_services_path("Kernel.php");
 
         $appServicesPath = app_services_path("Kernel.php");
-        
+
         $appServices = require($appServicesPath);
-        
+
         $servicesKernel = require($servicesKernelPath);
 
         return [...$servicesKernel, ...$appServices];
@@ -124,38 +136,40 @@ class Application
 
         return $httpKernel;
     }
-    
-    private function loadAppRoutes(): void {
+
+    private function loadAppRoutes(): void
+    {
 
         $path = app_routes_path();
 
         foreach ($this->routesGroup as $group) {
 
-            $group_file = $path . $group. ".php";
+            $group_file = $path . $group . ".php";
 
-            if(file_exists($group_file)) {
+            if (file_exists($group_file)) {
 
                 require_once $group_file;
             }
         }
-        
     }
 
-    public static function getAppDirectory() {
+    public static function getAppDirectory()
+    {
 
         return self::$root_dir;
     }
 
-    public static function getBlade(bool $isResource = false): BladeOne {
+    public static function getBlade(bool $isResource = false): BladeOne
+    {
 
         $path = $isResource ? app_resources_path() : app_view_path();
 
-        $blade = new BladeOne($path , app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+        $blade = new BladeOne($path, app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
     }
 
-    public function handleError(int $errno, string $errstr , string $errfile, int $errline): bool
+    public function handleError(int $errno, string $errstr, string $errfile, int $errline): bool
     {
         if (!(error_reporting() & $errno)) {
             // This error code is not included in error_reporting, so let it fall
@@ -164,17 +178,23 @@ class Application
         }
 
         throw new ErrorException(
-            secure($errstr), $errno, E_ERROR, $errfile, $errline, null
-        );        
+            secure($errstr),
+            $errno,
+            E_ERROR,
+            $errfile,
+            $errline,
+            null
+        );
     }
 
-    public function handleException ( Exception | Error $err) {
+    public function handleException(Exception | Error $err)
+    {
 
         if ($err->getCode() === 404) {
 
             return view_resource('templates.404');
         }
-        
+
         $traces = $this->getCodePreview($err->getTrace());
 
         $data = [
@@ -185,17 +205,18 @@ class Application
             'code' => $err->getCode(),
             'previews' => $traces,
         ];
-        
+
         view_resource('templates.errors', $data);
     }
 
-    private function getCodePreview(array $traceback) {
+    private function getCodePreview(array $traceback)
+    {
 
         $hl = new \Highlight\Highlighter();
 
         $traces = [];
 
-        foreach($traceback as $trace) {
+        foreach ($traceback as $trace) {
 
             if ($code = $this->getPreview($trace)) {
 
@@ -209,9 +230,10 @@ class Application
         return $traces;
     }
 
-    private function getPreview($trace) {
+    private function getPreview($trace)
+    {
 
-        if (! isset($trace["file"])) return false;
+        if (!isset($trace["file"])) return false;
         $lines = file($trace['file']);
         $start = max(0, $trace['line'] - 5);
         $end = min(count($lines), $trace['line'] + 5);
