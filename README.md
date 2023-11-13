@@ -1,61 +1,145 @@
-# Floky PHP
+# Floky
 
-**Floky PHP** est un framework MVC (Modèle-Vue-Contrôleur) pour le développement d'applications web en PHP. Il offre une structure organisée pour votre code, des fonctionnalités puissantes et une flexibilité pour créer des applications web robustes et évolutives.
+**Floky** est un framework MVC (Modèle-Vue-Contrôleur) pour le développement d'applications web en PHP. Il offre une structure organisée pour votre code, des fonctionnalités puissantes et une flexibilité pour créer des applications web robustes et évolutives.
 
 ## Caractéristiques Principales
 
 - **Architecture MVC** : Organisez votre code de manière propre et modulaire.
 - **Routage Puissant** : Gérez les URL de manière flexible pour diriger les demandes vers les contrôleurs appropriés.
-- **Gestion de Base de Données** : Facilitez l'interaction avec les bases de données grâce à notre ORM intégré.
+- **Gestion de Base de Données** : Facilitez l'interaction avec les bases de données grâce à Nexa (un ORM nouvelle génération flexible puissant et facile à prendre en main).
 - **Sécurité** : Intégrez des mécanismes de sécurité pour protéger votre application contre les vulnérabilités courantes.
-- **Vue Flexible** : Utilisez des moteurs de template pour concevoir des vues riches et dynamiques.
+- **Vue Flexible** : Utilisez le moteur de template [BladeOne](https://github.com/EFTEC/BladeOne/) pour concevoir des vues riches et dynamiques.
+- **Conteneur de Dépendances** : Utilisez un conteneur de dépendances pour gérer les services de votre application de manière efficace.
 - **Composants Réutilisables** : Profitez de bibliothèques et d'outils pour accélérer le développement.
 - **Documentation Complète** : Un guide détaillé pour vous aider à démarrer rapidement.
 
+## Pourquoi Floky
+
+Floky a été conçu pour répondre à un besoin fondamental : permettre aux développeurs de démarrer rapidement un projet sans devoir passer des semaines à comprendre le fonctionnement comme de nombreux  outils. Nous comprenons que parfois, vous avez simplement besoin d'un outil léger et efficace pour donner vie à vos idées sans être submergé par une multitude de fonctionnalités inutiles.
+
+L'idée derrière Floky n'est pas de réinventer la roue, mais de fournir un ensemble d'outils bien conçus et faciles à utiliser pour les projets de taille plus modeste. Nous avons cherché à simplifier le développement en évitant la complexité inutile, tout en offrant une flexibilité pour créer des applications web de qualité.
+
+
+Voici pourquoi Floky peut être le choix idéal pour votre prochain projet :
+
+- **Démarrage Rapide**
+
+Avec Floky, vous pouvez rapidement mettre en place la structure de votre application et commencer à écrire du code fonctionnel en un rien de temps. Notre architecture simple et modulaire vous permet de vous concentrer sur la logique de votre application sans avoir à vous soucier de configurations complexes.
+
+- **Moins de Courbe d'Apprentissage**
+
+Contrairement à de nombreux frameworks massifs, Floky est conçu pour être intuitif. Vous n'avez pas besoin de passer des heures à comprendre la documentation ou à apprendre des concepts abstraits. Se familiariser avec des notions telles que les routes, les middlewares et autres concepts clés de Floky est un processus rapide et transparent.
+
+- **Léger et Adaptable**
+
+Floky est un framework léger qui ne surcharge pas votre projet avec des fonctionnalités inutiles. Il s'adapte parfaitement aux projets de taille modeste, en vous fournissant les outils essentiels pour créer des applications web efficaces.
+
+Que votre projet soit un petit site web, une application web simple, ou un prototype, Floky peut vous aider à avancer rapidement sans sacrifier la qualité. Il offre la flexibilité dont vous avez besoin pour vous concentrer sur ce qui compte vraiment : donner vie à votre projet.
+
+Alors, pourquoi attendre ? Essayez Floky aujourd'hui et commencez à développer vos idées sans tracas ni complications inutiles.
+
 ## Installation
 
-Suivez ces étapes pour installer **Floky** :
+### Installation via Composer
 
-1. Clônez le référentiel depuis GitHub :
+L'installation via Composer est la méthode recommandée pour obtenir les dernières versions stables de votre framework. Voici comment les utilisateurs peuvent l'installer :
+
+- Assurez-vous d'avoir Composer installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger et l'installer à partir du site officiel de [Composer](https://getcomposer.org/download/).
 
 
-4. Configurez votre serveur web pour diriger les requêtes vers le dossier public de l'application.
+- Exécutez la commande Composer suivante pour installer Floky :
 
-5. Copiez le fichier `.env.example` en `.env` et configurez les paramètres d'environnement de votre application.
+    ```bash
+    composer require nom-utilisateur/nom-de-votre-framework
+    ```
 
-6. Vous êtes prêt à commencer à développer avec **Nom de Votre Framework PHP**.
+- Composer téléchargera et installera automatiquement les dépendances requises et les fichiers de votre framework dans le répertoire approprié de votre projet.
+
+### Installation depuis le Dépôt GitHub
+
+Vous pouvez également installer Floky directement à partir du dépôt GitHub si vous souhaitez obtenir la version la plus récente en développement. Voici comment procéder :
+
+- Rendez-vous sur la page du dépôt GitHub de Floky à l'adresse : lien-vers-le-dépôt.
+
+- Cliquez sur le bouton "Code" en haut à droite du dépôt, puis copiez l'URL du dépôt.
+
+- Dans votre projet, créez un répertoire où vous souhaitez installer Floky.
+
+    ```bash
+    git clone https://github.com/v1p3r75/Floky.git
+    ```
+- Une fois le dépôt cloné, accédez au répertoire de votre framework :
+    ```bash
+    cd Floky
+    ```
+Exécutez la commande Composer pour installer les dépendances requises :
+    ```bash
+    composer install
+    ```
+Vous aurez maintenant la version la plus récente de votre framework et toutes les dépendances correctement installées.
+
 
 ## Configuration
 
-La configuration de votre application se trouve dans le fichier `.env`. Vous pouvez y définir les paramètres de base de données, les clés secrètes, les options de routage, et d'autres configurations spécifiques à votre application.
+La configuration de votre application se trouve dans le fichier `.env` (Renommer le fichier `.env.example` en `.env`). Vous pouvez y définir les paramètres de base de données, les clés secrètes, et d'autres configurations spécifiques à votre application.
 
 ## Structure du Projet
 
-- `app/` : Contient les contrôleurs, les modèles, les vues, et d'autres composants de votre application.
-- `bootstrap/` : Contient les fichiers d'amorçage de l'application.
-- `config/` : Contient les fichiers de configuration.
 - `public/` : Le point d'entrée de votre application, les fichiers accessibles depuis le navigateur.
-- `resources/` : Les ressources telles que les vues, les fichiers CSS et JavaScript.
-- `routes/` : Les fichiers de définition des routes de votre application.
-- `storage/` : Les fichiers générés par l'application, tels que les journaux, les sessions, etc.
+- `src/` : Le répertoire principal de votre code source.
+    - `app/` : Contient les contrôleurs, les modèles, les middlewares, les services et d'autres composants de votre application.
+    - `cache/` : Utilisé pour stocker des données mises en cache, telles que des fichiers temporaires ou des données en cache.
+    - `config/` : Contient les fichiers de configuration de votre application.
+    - `resources/` : Les ressources telles que les vues, les fichiers CSS et JavaScript.
+    - `routes/` : Les fichiers de définition des routes de votre application.
+    - `storage/` : Les fichiers générés par l'application, tels que les journaux, les sessions, etc.
+    - `views/` : Contient les fichiers de templates pour la génération de vues.
+    - `test/` : Contient les fichiers de test pour l'application.
+    - ... (d'autres répertoires et fichiers spécifiques à votre projet)
 - `vendor/` : Les dépendances installées via Composer.
-- `README.md` : Ce fichier README.
-- ...
+
+## Comment Lancer l'Application
+
+Une fois que vous avez installé Floky, vous êtes prêt à lancer votre application. Suivez ces étapes simples pour démarrer votre projet :
+
+### Utiliser le serveur de PHP
+
+1. **Configuration de l'Environnement** : Avant de lancer votre application, assurez-vous d'avoir configuré correctement l'environnement. Assurez-vous que les paramètres, tels que la connexion à la base de données et d'autres options spécifiques à votre projet, sont correctement définis.
+
+2. **Migrations de la Base de Données** : Si votre application utilise une base de données, assurez-vous d'effectuer les migrations nécessaires pour créer les tables et les schémas de base de données. Vous pouvez utiliser des commandes spécifiques fournies par le framework pour effectuer ces migrations.
+
+3. **Création de Routes** : Configurez vos routes dans le répertoire `src/routes/`. C'est ici que vous spécifiez comment les URL doivent être gérées par votre application. Vous pouvez définir des contrôleurs, des actions et des paramètres pour chaque route.
+
+4. **Création de Contrôleurs et de Vues** : Développez les contrôleurs et les vues pour gérer les différentes parties de votre application. Les contrôleurs définissent la logique de gestion des demandes, tandis que les vues définissent la présentation des données.
+
+5. **Lancement du Serveur de Développement** : Utilisez la commande spécifique pour lancer le serveur de développement intégré de votre framework. Cela vous permettra de tester votre application localement.
+
+   ```bash
+   php -S localhost:9000 server.php
+    ```	
+    
+    Cette commande lancera le serveur de développement sur http://localhost:9000, et vous pourrez accéder à votre application à partir de votre navigateur.
+
+### Utiliser un Serveur Web Local
+
+- Lancement du Serveur Web Local : Démarrez votre serveur web local (par exemple, Apache ou Nginx) et configurez-le pour qu'il serve votre application à partir du répertoire public/ de votre projet.
+
+- Accès à l'Application : Ouvrez votre navigateur web et accédez à l'URL appropriée pour votre serveur web local. Vous pourrez voir votre application en cours d'exécution.
 
 ## Documentation
 
-Consultez notre documentation complète sur [lien-vers-la-documentation](https://example.com/documentation) pour en savoir plus sur la façon d'utiliser **Nom de Votre Framework PHP**.
+Consultez notre [documentation complète](https://github.com/v1p3r75/Floky) pour en savoir plus sur la façon d'utiliser **Floky**.
 
 ## Contributeurs
 
-- [Votre Nom](https://github.com/votre-utilisateur) - Fondateur et développeur principal
+Le développement de **Floky** est actuellement en cours, et nous accueillons avec plaisir toute contribution de la communauté. Si vous souhaitez contribuer, veuillez consulter notre [guide de contribution](CONTRIBUTING.md).
 
-Nous accueillons les contributions de la communauté. Si vous souhaitez contribuer, veuillez consulter notre [guide de contribution](CONTRIBUTING.md).
+L'équipe de développement principal comprend actuellement les contributeurs suivants :
+
+- [Fortunatus KIDJE (v1p3r75)](https://github.com/v1p3r75) - Fondateur et développeur principal
+
+Nous sommes enthousiastes à l'idée de développer ce projet et d'ajouter de nouvelles fonctionnalités pour répondre aux besoins de la communauté des développeurs PHP. Rejoignez-nous dans cette aventure et contribuez à faire de **Floky** un outil encore plus léger et puissant pour le développement d'applications web en PHP.
 
 ## Licence
 
-Ce projet est sous licence [Licence de Votre Choix](LICENSE) - pour plus de détails, veuillez consulter le fichier LICENSE.
-
----
-
-*Remarque : Assurez-vous de personnaliser ce README avec des informations spécifiques à votre framework, y compris les caractéristiques uniques, la structure du projet, la licence et d'autres détails importants. N'oubliez pas de créer des fichiers supplémentaires tels que `CONTRIBUTING.md`, `LICENSE` et de fournir une documentation complète pour vos utilisateurs et contributeurs.*
+Ce projet est sous licence [MIT](https://en.wikipedia.org/wiki/MIT_License) - pour plus de détails, veuillez consulter le fichier [LICENCE](LICENCE).
