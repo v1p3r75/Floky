@@ -91,9 +91,8 @@ La configuration de votre application se trouve dans le fichier `.env` (Renommer
     - `routes/` : Les fichiers de définition des routes de votre application.
     - `storage/` : Les fichiers générés par l'application, tels que les journaux, les sessions, etc.
     - `views/` : Contient les fichiers de templates pour la génération de vues.
-    - `test/` : Contient les fichiers de test pour l'application.
     - ... (d'autres répertoires et fichiers spécifiques à votre projet)
-- `vendor/` : Les dépendances installées via Composer.
+- `test/` : Contient les fichiers de test pour l'application.
 
 ## Comment Lancer l'Application
 
