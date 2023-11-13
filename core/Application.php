@@ -162,7 +162,7 @@ class Application
     public static function getBlade(bool $isResource = false): BladeOne
     {
 
-        $path = $isResource ? app_resources_path() : app_view_path();
+        $path = $isResource ? app_storage_path("framework") : app_view_path();
 
         $blade = new BladeOne($path, app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 

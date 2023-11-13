@@ -11,6 +11,6 @@ class WelcomeController extends Controller
 
     public function index(Request $request, Email $mail, $id) {
 
-        echo "Welcome to floky " . $id;
+        echo "Welcome to floky ";
     }
 }

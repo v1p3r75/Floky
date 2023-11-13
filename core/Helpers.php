@@ -172,7 +172,7 @@ function app_config_path(string $path = "") {
 
 function app_cache_path(string $path = "") {
 
-    return app_root_path("/cache/$path");
+    return app_storage_path("/framework/cache/$path");
 
 }
 
