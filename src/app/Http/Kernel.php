@@ -9,6 +9,8 @@ use Floky\Http\Kernel as HttpKernel;
 return new class extends HttpKernel
 {
 
+    protected array $routesGroup = ['web', 'api', 'others'];
+
     
     protected array $middlewares = [
 

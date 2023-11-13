@@ -8,6 +8,7 @@ use Error;
 use ErrorException;
 use Exception;
 use Floky\Container\Container;
+use Floky\Exceptions\NotFoundException;
 use Floky\Http\Middlewares\Middlewares;
 use Floky\Http\Requests\Request;
 use Floky\Routing\Route;
@@ -20,8 +21,6 @@ class Application
     public Container $container;
 
     public Request $request;
-
-    public array $routesGroup = ["api", "web"];
 
     public static string $root_dir;
 
@@ -134,16 +133,19 @@ class Application
     private function loadAppRoutes(): void
     {
 
+        $kernel = self::getHttpKernel();
+
         $path = app_routes_path();
 
-        foreach ($this->routesGroup as $group) {
+        foreach ($kernel->getRoutesGroup() as $group) {
 
             $group_file = $path . $group . ".php";
 
             if (file_exists($group_file)) {
 
                 require_once $group_file;
-            }
+
+            } else throw new NotFoundException("'$group' is registered but its file cannot be found. Make sure to create its file in ". app_routes_path());
         }
     }
 

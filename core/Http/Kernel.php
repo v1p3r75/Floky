@@ -10,6 +10,16 @@ use Floky\Http\Responses\Response;
 class Kernel
 {
 
+    protected array $routesGroup = ['web', 'api'];
+
+    protected array $routesGroupConfiguration = [
+
+        "api" => [
+
+            ''
+        ]
+    ];
+
     protected array $middlewares = [];
 
 
@@ -46,6 +56,12 @@ class Kernel
         }
 
         return $this->middlewaresByRoute[$routeGroupName];
+    }
+
+    public function getRoutesGroup(): array
+    {
+
+        return $this->routesGroup;
     }
 
 }
