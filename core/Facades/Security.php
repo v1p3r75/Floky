@@ -19,4 +19,21 @@ class Security
 
         return password_hash($password, $algo);
     }
+
+    public static function secure(array | string $data)
+    {
+        if (is_array($data)) {
+
+            foreach ($data as $key => $value) {
+                
+                $data[$key] = secure($value);
+            }
+    
+        } else {
+    
+            $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+        }
+    
+        return $data;
+    }
 }

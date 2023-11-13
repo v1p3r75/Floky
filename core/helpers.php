@@ -1,6 +1,7 @@
 <?php
 
 use Floky\Application;
+use Floky\Facades\Security;
 use Floky\Http\Responses\Response;
 use Floky\Routing\Route;
 
@@ -13,19 +14,7 @@ use Floky\Routing\Route;
 
 function secure(array | string $data) {
 
-    if (is_array($data)) {
-
-        foreach ($data as $key => $value) {
-            
-            $data[$key] = secure($value);
-        }
-
-    } else {
-
-        $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
-    }
-
-    return $data;
+    return Security::secure($data);
 }
 
 
@@ -95,6 +84,7 @@ function route(string $name): string | null
  * @return string|null The value of the environment variable or the default value if the variable is not set.
  */
 function env(string $key, string $default = null) {
+
     return isset($_ENV[$key]) ? $_ENV[$key] : $default;
 }
 
@@ -105,10 +95,12 @@ function env(string $key, string $default = null) {
  * @return array The configuration data from the file or an empty array if the file doesn't exist.
  */
 function config(string $file) {
+
     $file = $file . ".php";
     $config_files = get_directory_files(app_config_path());
 
     if (array_key_exists($file, $config_files)) {
+
         return require $config_files[$file];
     }
 
@@ -122,6 +114,7 @@ function config(string $file) {
  * @return array An associative array where keys are file names and values are their full paths.
  */
 function get_directory_files(string $dir): array {
+
     $files = [];
     $content = scandir($dir);
 

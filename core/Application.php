@@ -46,12 +46,6 @@ class Application
 
     }
 
-    static function sendMail()
-    {
-
-        
-    }
-
     public static function getInstance(?string $root_dir = null)
     {
 
