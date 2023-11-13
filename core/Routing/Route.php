@@ -105,10 +105,10 @@ class Route
 
         $current_uri = self::format_uri($request->getUri());
 
-        if (!self::methodIsCorrect($method)) {
+        // if (!self::methodIsCorrect($method)) {
 
-            throw new ParseErrorException("Route does not support '$method'  method");
-        }
+        //     throw new ParseErrorException("Router does not support '$method'  method");
+        // }
 
         foreach (self::$routes as $route) {
 

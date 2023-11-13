@@ -86,6 +86,10 @@ class Application
 
         $this->saveAppServices($services);
 
+        // Collect GET, POST, PUT, PATCH, DELETE together
+        $requestData = $this->collectRequestData();
+        $this->request->saveRequestData($requestData);
+
         // Run all app middlewares before run current route
 
         $httpKernel = self::getHttpKernel();
@@ -163,6 +167,28 @@ class Application
         $blade = new BladeOne($path, app_cache_path(), BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
 
         return $blade;
+    }
+
+    private function collectRequestData(): array
+    {
+
+        $specialMethods = ['PUT', 'PATCH', 'DELETE'];
+        
+        $data = []; // for specials methods
+
+        if (in_array($this->request->getMethod(), $specialMethods)) {
+
+            $requestContent = file_get_contents('php://input');
+
+            $data = json_decode($requestContent, true);
+
+            if (is_null($data)) { // if is not a valid json. Ex: content = "var=2&m=4"
+
+                parse_str($requestContent, $data);
+            }
+        }
+        
+        return [...$_GET, ...$_POST, ...$data];
     }
 
     public function handleError(int $errno, string $errstr, string $errfile, int $errline): bool

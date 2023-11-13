@@ -14,6 +14,8 @@ class Request
 
     public string $attr = "start"; /* Just for middlewares testing */
 
+    public array $data = [];
+
     public static function getInstance()
     {
 
@@ -71,6 +73,13 @@ class Request
             }
         }
         return $keyList;
+    }
+
+    public function saveRequestData(array $data) {
+
+        $this->data = $data;
+
+        return true;
     }
 
     public static function getUri(string $type = 'string')
