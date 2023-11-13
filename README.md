@@ -10,6 +10,7 @@
 - **Sécurité** : Intégrez des mécanismes de sécurité pour protéger votre application contre les vulnérabilités courantes.
 - **Vue Flexible** : Utilisez le moteur de template [BladeOne](https://github.com/EFTEC/BladeOne/) pour concevoir des vues riches et dynamiques.
 - **Conteneur de Dépendances** : Utilisez un conteneur de dépendances pour gérer les services de votre application de manière efficace.
+- **Tests Plus Élégants** : Profitez de [Pest](https://pestphp.com/), un framework de test élégant pour PHP, pour écrire des tests propres, lisibles et expressifs pour votre application.
 - **Composants Réutilisables** : Profitez de bibliothèques et d'outils pour accélérer le développement.
 - **Documentation Complète** : Un guide détaillé pour vous aider à démarrer rapidement.
 
@@ -17,7 +18,7 @@
 
 Floky a été conçu pour répondre à un besoin fondamental : permettre aux développeurs de démarrer rapidement un projet sans devoir passer des semaines à comprendre le fonctionnement comme de nombreux  outils. Nous comprenons que parfois, vous avez simplement besoin d'un outil léger et efficace pour donner vie à vos idées sans être submergé par une multitude de fonctionnalités inutiles.
 
-L'idée derrière Floky n'est pas de réinventer la roue, mais de fournir un ensemble d'outils bien conçus et faciles à utiliser pour les projets de taille plus modeste. Nous avons cherché à simplifier le développement en évitant la complexité inutile, tout en offrant une flexibilité pour créer des applications web de qualité.
+L'idée derrière Floky n'est pas de **réinventer la roue**, mais de fournir un ensemble d'outils bien conçus et faciles à utiliser pour les projets de taille plus modeste. Nous avons cherché à simplifier le développement en évitant la complexité inutile, tout en offrant une flexibilité pour créer des applications web de qualité.
 
 
 Voici pourquoi Floky peut être le choix idéal pour votre prochain projet :
@@ -59,11 +60,7 @@ L'installation via Composer est la méthode recommandée pour obtenir les derni�
 
 Vous pouvez également installer Floky directement à partir du dépôt GitHub si vous souhaitez obtenir la version la plus récente en développement. Voici comment procéder :
 
-- Rendez-vous sur la page du dépôt GitHub de Floky à l'adresse : lien-vers-le-dépôt.
-
-- Cliquez sur le bouton "Code" en haut à droite du dépôt, puis copiez l'URL du dépôt.
-
-- Dans votre projet, créez un répertoire où vous souhaitez installer Floky.
+- Clonez le dépot avec la commande suivante :
 
     ```bash
     git clone https://github.com/v1p3r75/Floky.git
