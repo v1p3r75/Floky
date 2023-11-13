@@ -69,7 +69,7 @@ Vous pouvez également installer Floky directement à partir du dépôt GitHub s
     ```bash
     cd Floky
     ```
-Exécutez la commande Composer pour installer les dépendances requises :
+- Exécutez la commande Composer pour installer les dépendances requises :
     ```bash
     composer install
     ```
