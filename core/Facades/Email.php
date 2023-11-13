@@ -32,7 +32,7 @@ class Email
 
         //Recipients
         $this->mail->setFrom($this->config['from'], env('APP_NAME'));
-
+    
     }
 
     public function setDebugLevel(int $level) {
@@ -53,22 +53,38 @@ class Email
         return $this;
     }
 
-    public function sendMail(array $recipients, string $subject, string $body, string $altBody = "") {
+    public function altBody(string $altBody) {
+
+        $this->mail->AltBody = $altBody;
+        return $this;
+    }
+
+    public function attachement(string $path) {
+
+        $this->mail->addAttachment($path);
+        return $this;
+    }
+
+    public function replyTo(string $address) {
+
+        $this->mail->addReplyTo($address);
+        return $this;
+    }
+
+    public function sendMail(array $recipients, string $subject, string $body, bool $addCC = false) {
 
         try {
 
             foreach($recipients as $recipient) {
 
-                $this->mail->addAddress($recipient);
+                if($addCC) $this->mail->addCC($recipient);
+                else $this->mail->addBCC($recipient);
             }
     
             $this->mail->Subject = $subject;
             $this->mail->Body    = $body;
-            $this->mail->AltBody = $altBody;
 
-            $this->mail->send();
-
-            return true;
+            return $this->mail->send();
 
         } catch (PHPMailerException $e) {
 

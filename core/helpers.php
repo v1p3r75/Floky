@@ -87,41 +87,51 @@ function route(string $name): string | null
 }
 
 
+/**
+ * Get the value of an environment variable or return a default value.
+ *
+ * @param string $key The name of the environment variable.
+ * @param string|null $default (Optional) The default value to return if the environment variable is not set.
+ * @return string|null The value of the environment variable or the default value if the variable is not set.
+ */
 function env(string $key, string $default = null) {
-
     return isset($_ENV[$key]) ? $_ENV[$key] : $default;
-
 }
 
+/**
+ * Load a configuration file by name and return its contents.
+ *
+ * @param string $file The name of the configuration file (without the .php extension).
+ * @return array The configuration data from the file or an empty array if the file doesn't exist.
+ */
 function config(string $file) {
-
     $file = $file . ".php";
     $config_files = get_directory_files(app_config_path());
 
     if (array_key_exists($file, $config_files)) {
-
         return require $config_files[$file];
     }
 
     return [];
 }
 
+/**
+ * Get an array of files in a directory.
+ *
+ * @param string $dir The path to the directory to scan for files.
+ * @return array An associative array where keys are file names and values are their full paths.
+ */
 function get_directory_files(string $dir): array {
-    
     $files = [];
-
     $content = scandir($dir);
 
     if ($content) {
-
         foreach($content as $value) {
             $path = $dir . $value;
             if(is_file($path)) {
-
                 $files[$value] = $path;
             }
         }
-
     }
 
     return $files;
