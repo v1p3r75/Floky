@@ -85,9 +85,7 @@ La configuration de votre application se trouve dans le fichier `.env` (Renommer
 - `public/` : Le point d'entrée de votre application, les fichiers accessibles depuis le navigateur.
 - `src/` : Le répertoire principal de votre code source.
     - `app/` : Contient les contrôleurs, les modèles, les middlewares, les services et d'autres composants de votre application.
-    - `cache/` : Utilisé pour stocker des données mises en cache, telles que des fichiers temporaires ou des données en cache.
     - `config/` : Contient les fichiers de configuration de votre application.
-    - `resources/` : Les ressources telles que les vues, les fichiers CSS et JavaScript.
     - `routes/` : Les fichiers de définition des routes de votre application.
     - `storage/` : Les fichiers générés par l'application, tels que les journaux, les sessions, etc.
     - `views/` : Contient les fichiers de templates pour la génération de vues.
