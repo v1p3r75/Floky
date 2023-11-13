@@ -184,6 +184,15 @@ class Route
 
     public static function name(string $name)
     {
+        foreach(self::$routes as $route) {
+
+            if(isset($route["name"]) && $route["name"] == $name) {
+
+                $found = $route['uri'] == "" ? '/' : $route['uri'];
+                throw new ParseErrorException("'$name' is already used by '$found'" );
+            }
+        }
+
         $route_index = self::getCurrentRoute();
 
         self::addRouteData($route_index, 'name', $name);

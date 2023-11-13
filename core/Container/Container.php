@@ -87,7 +87,7 @@ class Container
         return $dependencies;
     }
 
-    public function getMethod($class, $name, ...$args) {
+    public function getMethod($class, $name, ...$args): array {
 
         $reflection = new ReflectionMethod($class, $name);
 
@@ -103,7 +103,7 @@ class Container
 
     }
 
-    public function resolveFunction(Closure | callable $function, ...$args) {
+    public function resolveFunction(Closure | callable $function, ...$args): array {
 
         $reflection = new ReflectionFunction($function);
 
