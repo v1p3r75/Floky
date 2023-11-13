@@ -14,7 +14,7 @@ class Request
 
     public string $attr = "start"; /* Just for middlewares testing */
 
-    public array $data = [];
+    public static array $data = [];
 
     public static function getInstance()
     {
@@ -25,73 +25,39 @@ class Request
         return self::$instance;
     }
 
-    public static function fromGet(string $key = null)
-    {
-
-        if ($key !== null && isset($_GET[$key])) {
-
-            return secure($_GET[$key]);
-        }
-
-        return secure($_GET);
-    }
-
-    public static function fromPost(string $key = null)
-    {
-
-        if ($key !== null && isset($_POST[$key])) {
-
-            return secure($_POST[$key]);
-        }
-
-        return secure($_POST);
-    }
-
-    public static function fromGetOnly(array $keys = [])
-    {
-
-        $keyList = [];
-        foreach ($keys as $key) {
-
-            if (isset($_GET[$key])) {
-
-                $keyList[$key] = secure($_GET[$key]);
-            }
-        }
-        return $keyList;
-    }
-
-    public static function fromPostOnly(array $keys = [])
-    {
-
-        $keyList = [];
-        foreach ($keys as $key) {
-
-            if (isset($_POST[$key])) {
-
-                $keyList[$key] = secure($_POST[$key]);
-            }
-        }
-        return $keyList;
-    }
-
     public function saveRequestData(array $data) {
 
-        $this->data = $data;
+        self::$data = $data;
 
         return true;
+    }
+
+
+    public static function input(string $key, $default = null): string | null
+    {
+
+        return isset(self::$data[$key]) ? secure(self::$data[$key]) : $default;
+    }
+
+    public static function only(array $keys): array
+    {
+
+        $result = array_filter(self::$data, fn($key) => in_array($key, $keys), ARRAY_FILTER_USE_KEY);
+
+        return secure($result);
+    }
+    
+    public static function all(): array
+    {
+
+        return secure(self::$data);
     }
 
     public static function getUri(string $type = 'string')
     {
 
-        if ($type === 'string') {
-
-            return secure($_SERVER['REQUEST_URI']);
-        } else if ($type === 'array') {
-
-            return explode('/', secure($_SERVER['REQUEST_URI']));
-        }
+        return secure($_SERVER['REQUEST_URI']);
+        
     }
 
     public static function getUrl()
