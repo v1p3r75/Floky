@@ -6,7 +6,6 @@ use Floky\Routing\Route;
 
 Route::get('/', function(Request $request) {
 
-    dump(config('mail'));
     return view('welcome', ['name' => 'Floky']);
 
 })->name('home')->middlewares(['first', 'second']);
