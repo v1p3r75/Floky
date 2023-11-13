@@ -11,3 +11,7 @@ Route::get('/', function(Request $request) {
 })->name('home')->middlewares(['first', 'second']);
 
 Route::get('/contact/{id}', [WelcomeController::class, 'index'])->name('contact');
+
+Route::group(function() {
+
+});

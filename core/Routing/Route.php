@@ -13,7 +13,7 @@ use Floky\Http\Requests\Request;
 class Route
 {
 
-    use Middlewares;
+    use Middlewares, RouteGroup;
 
     private static array $routes = [];
 
