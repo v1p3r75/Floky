@@ -43,19 +43,12 @@ Alors, pourquoi attendre ? Essayez Floky aujourd'hui et commencez à développer
 
 - Assurez-vous d'avoir Composer installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger et l'installer à partir du site officiel de [Composer](https://getcomposer.org/download/).
 
-- Clonez le dépot avec la commande suivante :
+- Exécutez la commande Composer pour créer et installer les dépendences de l'application :
 
     ```bash
-    git clone https://github.com/v1p3r75/Floky.git
+    composer create-project v1p3r75/floky --stability=dev    
     ```
-- Une fois le dépôt cloné, accédez au répertoire de votre framework :
-    ```bash
-    cd Floky
-    ```
-- Exécutez la commande Composer pour installer les dépendances requises :
-    ```bash
-    composer install
-    ```
+
 Vous aurez maintenant la version la plus récente de votre framework et toutes les dépendances correctement installées.
 
 
