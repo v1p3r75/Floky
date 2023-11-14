@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d56729677c9cb1cc35c8f24b95d2e2ff",
+    "content-hash": "d62ce7533c1f3e13c21b4fea3943aa85",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -607,6 +607,44 @@
                 }
             ],
             "time": "2023-01-26T09:26:14+00:00"
+        },
+        {
+            "name": "v1p3r75/floky-core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/v1p3r75/floky-core.git",
+                "reference": "6fd2257c983f4fd8e087bbfe002fedb17bf86605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/6fd2257c983f4fd8e087bbfe002fedb17bf86605",
+                "reference": "6fd2257c983f4fd8e087bbfe002fedb17bf86605",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Floky\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "v1p3r75",
+                    "email": "elfriedv16@gmail.com"
+                }
+            ],
+            "description": "The Floky framework core",
+            "support": {
+                "issues": "https://github.com/v1p3r75/floky-core/issues",
+                "source": "https://github.com/v1p3r75/floky-core/tree/master"
+            },
+            "time": "2023-11-14T18:32:05+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4200,7 +4238,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,

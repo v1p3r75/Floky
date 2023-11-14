@@ -23,7 +23,8 @@
         "eftec/bladeone": "^4.9",
         "scrivo/highlight.php": "v9.18.1.10",
         "phpmailer/phpmailer": "^6.8",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "v1p3r75/floky-core": "dev-master"
     },
     "config": {
         "allow-plugins": {
