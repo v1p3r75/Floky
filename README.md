@@ -41,24 +41,7 @@ Alors, pourquoi attendre ? Essayez Floky aujourd'hui et commencez à développer
 
 ## Installation
 
-### Installation via Composer
-
-L'installation via Composer est la méthode recommandée pour obtenir les dernières versions stables de votre framework. Voici comment les utilisateurs peuvent l'installer :
-
 - Assurez-vous d'avoir Composer installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger et l'installer à partir du site officiel de [Composer](https://getcomposer.org/download/).
-
-
-- Exécutez la commande Composer suivante pour installer Floky :
-
-    ```bash
-    composer require v1p3r75/floky
-    ```
-
-- Composer téléchargera et installera automatiquement les dépendances requises et les fichiers de votre framework dans le répertoire approprié de votre projet.
-
-### Installation depuis le Dépôt GitHub
-
-Vous pouvez également installer Floky directement à partir du dépôt GitHub si vous souhaitez obtenir la version la plus récente en développement. Voici comment procéder :
 
 - Clonez le dépot avec la commande suivante :
 
