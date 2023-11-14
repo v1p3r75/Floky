@@ -14,6 +14,7 @@
             "email": "elfriedv16@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require-dev": {
         "symfony/var-dumper": "^6.3",
         "pestphp/pest": "^2.24"
