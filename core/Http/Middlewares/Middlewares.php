@@ -8,7 +8,7 @@ use Floky\Http\Requests\Request;
 trait Middlewares
 {
 
-    public static function runMiddlewares(array $middlewares, Request $request): Request {
+    private static function runMiddlewares(array $middlewares, Request $request): Request {
 
         if (count($middlewares) > 0) {
 
@@ -23,7 +23,7 @@ trait Middlewares
 
     }
 
-    public static function getMiddleware(string $name) {
+    private static function getMiddleware(string $name) {
 
         $kernel = Application::getHttpKernel();
 
@@ -31,7 +31,7 @@ trait Middlewares
 
     }
 
-    public static function getMiddlewareArray(array $middlewares): array {
+    private static function getMiddlewareArray(array $middlewares): array {
 
         $result = [];
 

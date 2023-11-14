@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $name }} - Something is wrong!</title>
+    <link rel="icon" href="/favicon.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
     <style>
         * {
