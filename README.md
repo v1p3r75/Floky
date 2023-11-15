@@ -143,6 +143,15 @@ Nous sommes enthousiastes à l'idée de développer ce projet et d'ajouter de no
 
 - Soumettez une pull request.
 
+#### NB
+
+- Utiliser des Branches Descriptives : Lorsque vous travaillez sur de nouvelles fonctionnalités ou correctifs, créez des branches descriptives (par exemple, feature/nouvelle-fonctionnalite ou fix/correction-bug). Cela facilite la gestion des contributions multiples.
+
+- Décrire Clairement les Pull Requests : Fournissez des descriptions claires et concises pour chaque pull request. Expliquez le problème résolu ou la nouvelle fonctionnalité ajoutée. Assurez-vous que chaque pull request est liée à une issue si applicable.
+
+- Utiliser des Conventions de Message de Commit Claires : Adoptez des conventions claires pour les messages de commit. Par exemple, utilisez le format <type>(<scope>): <message>, où <type> peut être feat pour une nouvelle fonctionnalité, fix pour une correction de bug, etc.
+
+
 Nous apprécions vos contributions !
 
 ## Licence
