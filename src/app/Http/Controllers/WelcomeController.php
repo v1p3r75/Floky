@@ -26,7 +26,7 @@ class WelcomeController extends Controller
         $rules = [
             'email' =>'required|string|max_length:200',
             'username' =>'required|max_length:100',
-            'password' => ['required','max_length:200', new SameRule()],
+            'password' => ['required','max_length:2', new SameRule()],
         ];
 
         $validate = new Validator($request->all(), $rules);
@@ -51,11 +51,11 @@ class SameRule implements RuleInterface
     {
         $this->field = $field;
 
-        return dd($data);
+        return $value == $data['username'];
     }
 
     public function message(): string
     {
-        return "";
+        return "Votre mot de passe ne peut pas etre la meme que votre nom d'utilisateur";
     }
 }
