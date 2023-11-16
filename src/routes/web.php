@@ -12,6 +12,9 @@ Route::get('/', function(Request $request) {
 
 Route::get('/contact/{id}', [WelcomeController::class, 'index'])->name('contact');
 
+Route::get('/php-validator', [WelcomeController::class, 'validator'])->name('validator');
+Route::post('/php-validator-post', [WelcomeController::class, 'validate'])->name('validator.post');
+
 Route::group(function() {
 
 });

@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "119375a3a65ce908195012a98d11cc50",
+    "content-hash": "d96c45a606e0cf7af4ab1f56ec8fca60",
     "packages": [
+        {
+            "name": "blakvghost/php-validator",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BlakvGhost/PHPValidator.git",
+                "reference": "065289cc6541dea3f067106023f1a4cd1fc77876"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BlakvGhost/PHPValidator/zipball/065289cc6541dea3f067106023f1a4cd1fc77876",
+                "reference": "065289cc6541dea3f067106023f1a4cd1fc77876",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "pestphp/pest": "^2.24"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BlakvGhost\\PHPValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kabirou ALASSANE",
+                    "email": "kabirou2001@gmail.com"
+                }
+            ],
+            "description": "PHPValidator is a modern PHP library for data validation in your PHP applications. It provides a flexible and extensible way to validate data using predefined rules or by creating custom validation rules.",
+            "support": {
+                "issues": "https://github.com/BlakvGhost/PHPValidator/issues",
+                "source": "https://github.com/BlakvGhost/PHPValidator/tree/main"
+            },
+            "time": "2023-11-16T04:42:02+00:00"
+        },
         {
             "name": "eftec/bladeone",
             "version": "4.9",
@@ -4320,7 +4364,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "v1p3r75/floky-core": 20
+        "v1p3r75/floky-core": 20,
+        "blakvghost/php-validator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
