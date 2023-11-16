@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d96c45a606e0cf7af4ab1f56ec8fca60",
+    "content-hash": "119375a3a65ce908195012a98d11cc50",
     "packages": [
         {
             "name": "blakvghost/php-validator",
-            "version": "dev-main",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BlakvGhost/PHPValidator.git",
-                "reference": "065289cc6541dea3f067106023f1a4cd1fc77876"
+                "reference": "b9a8d78f698926bb360cb70208d273e26b936d16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BlakvGhost/PHPValidator/zipball/065289cc6541dea3f067106023f1a4cd1fc77876",
-                "reference": "065289cc6541dea3f067106023f1a4cd1fc77876",
+                "url": "https://api.github.com/repos/BlakvGhost/PHPValidator/zipball/b9a8d78f698926bb360cb70208d273e26b936d16",
+                "reference": "b9a8d78f698926bb360cb70208d273e26b936d16",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,6 @@
             "require-dev": {
                 "pestphp/pest": "^2.24"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -46,9 +45,9 @@
             "description": "PHPValidator is a modern PHP library for data validation in your PHP applications. It provides a flexible and extensible way to validate data using predefined rules or by creating custom validation rules.",
             "support": {
                 "issues": "https://github.com/BlakvGhost/PHPValidator/issues",
-                "source": "https://github.com/BlakvGhost/PHPValidator/tree/main"
+                "source": "https://github.com/BlakvGhost/PHPValidator/tree/v1.1.2"
             },
-            "time": "2023-11-16T04:42:02+00:00"
+            "time": "2023-11-16T20:03:57+00:00"
         },
         {
             "name": "eftec/bladeone",
@@ -456,7 +455,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -816,15 +815,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/v1p3r75/floky-core.git",
-                "reference": "ebfdac9b3d73cf2052206d9b3cdc2b565c386907"
+                "reference": "abfcb64770ae72d69cbfd48a69a0dc9491425f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/ebfdac9b3d73cf2052206d9b3cdc2b565c386907",
-                "reference": "ebfdac9b3d73cf2052206d9b3cdc2b565c386907",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/abfcb64770ae72d69cbfd48a69a0dc9491425f51",
+                "reference": "abfcb64770ae72d69cbfd48a69a0dc9491425f51",
                 "shasum": ""
             },
             "require": {
+                "blakvghost/php-validator": "^1.1",
                 "eftec/bladeone": "^4.9",
                 "php": "^8.1",
                 "phpmailer/phpmailer": "^6.8",
@@ -854,7 +854,7 @@
                 "issues": "https://github.com/v1p3r75/floky-core/issues",
                 "source": "https://github.com/v1p3r75/floky-core/tree/master"
             },
-            "time": "2023-11-14T20:34:27+00:00"
+            "time": "2023-11-16T23:13:53+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -949,12 +949,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/paratestphp/paratest.git",
-                "reference": "fcb33097a6d76e60c34164423507c469146efc04"
+                "reference": "f40e691e0994d57d071d5b494a31aebf274092a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/fcb33097a6d76e60c34164423507c469146efc04",
-                "reference": "fcb33097a6d76e60c34164423507c469146efc04",
+                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/f40e691e0994d57d071d5b494a31aebf274092a2",
+                "reference": "f40e691e0994d57d071d5b494a31aebf274092a2",
                 "shasum": ""
             },
             "require": {
@@ -965,7 +965,7 @@
                 "fidry/cpu-core-counter": "^0.5.1 || ^1.0.0",
                 "jean85/pretty-package-versions": "^2.0.5",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-                "phpunit/php-code-coverage": "^10.1.7",
+                "phpunit/php-code-coverage": "^10.1.8",
                 "phpunit/php-file-iterator": "^4.1.0",
                 "phpunit/php-timer": "^6.0",
                 "phpunit/phpunit": "^10.4.2",
@@ -1037,7 +1037,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2023-11-08T16:58:55+00:00"
+            "time": "2023-11-15T14:30:23+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -2173,12 +2173,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "14ceade798881f984408ec950146e2d071706356"
+                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/14ceade798881f984408ec950146e2d071706356",
-                "reference": "14ceade798881f984408ec950146e2d071706356",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/84838eed9ded511f61dc3e8b5944a52d9017b297",
+                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297",
                 "shasum": ""
             },
             "require": {
@@ -2236,7 +2236,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/main"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.8"
             },
             "funding": [
                 {
@@ -2244,7 +2244,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-09T06:48:40+00:00"
+            "time": "2023-11-15T13:31:15+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4089,7 +4089,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/main"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -4364,8 +4364,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "v1p3r75/floky-core": 20,
-        "blakvghost/php-validator": 20
+        "v1p3r75/floky-core": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
