@@ -13,4 +13,9 @@ class WelcomeController extends Controller
 
         echo "Welcome to floky ";
     }
+    
+    public function validator(Request $request) {
+
+        return view('php-validator');
+    }
 }
