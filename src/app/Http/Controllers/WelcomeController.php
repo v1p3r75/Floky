@@ -11,8 +11,8 @@ class WelcomeController extends Controller
 {
 
     private $rules = [
-        'email' =>'required|email',
-        'username' =>'required',
+        'email' =>'required|string|max_length:200',
+        'username' =>'required|max_length:100',
     ];
 
     public function index(Request $request, Email $mail, $id) {
@@ -26,7 +26,11 @@ class WelcomeController extends Controller
     }
     
     public function validate(Request $request) {
-        $validate = new Validator($request->all());
-        return dd();
+        $validate = new Validator($request->all(), $this->rules);
+
+        if (!$validate->isValid()) {
+            return dd($validate->getErrors());
+        }
+        return dd($validate->isValid());
     }
 }
