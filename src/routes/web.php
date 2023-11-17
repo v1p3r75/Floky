@@ -10,15 +10,4 @@ Route::get('/', function(Request $request) {
 
 })->name('home')->middlewares(['first', 'second']);
 
-Route::get('/contact/{id}', [WelcomeController::class, 'index'])->name('contact');
-
-Route::get('/php-validator', function() {
-
-    return view('php-validator');
-})->name('validator');
-
-Route::post('/php-validator-post', [WelcomeController::class, 'validate'])->name('validator.post');
-
-Route::group(function() {
-
-});
+Route::get('/page', [WelcomeController::class, 'index'])->name('page');
