@@ -11,7 +11,7 @@ return [
     | Values can be an array of origins or '*' to allow any origin.
     |
     */
-    'allowed_origins' => ['http://localhost', 'https://example.com'],
+    'allowed_origins' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | GET, POST, PUT, DELETE, etc.
     |
     */
-    'allowed_methods' => ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+    'allowed_methods' => ['*'],
 
     /*
     |--------------------------------------------------------------------------

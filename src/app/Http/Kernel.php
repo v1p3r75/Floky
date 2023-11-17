@@ -14,16 +14,17 @@ return new class extends HttpKernel
     
     protected array $middlewares = [
 
+        \App\Http\Middlewares\CorsMiddleware::class,
     ];
 
     protected array $middlewaresByRoute = [
 
         "api" => [
-            FirstMiddleware::class,
+
         ],
 
         "web" => [
-            FirstMiddleware::class
+
         ],
     ];
 
@@ -31,6 +32,7 @@ return new class extends HttpKernel
 
         'first' => FirstMiddleware::class,
         'second' => SecondMiddleware::class,
+        'cors' => \App\Http\Middlewares\CorsMiddleware::class,
     ];
 
 };
