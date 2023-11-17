@@ -815,12 +815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/v1p3r75/floky-core.git",
-                "reference": "abfcb64770ae72d69cbfd48a69a0dc9491425f51"
+                "reference": "cd5e65199ae8f54a91ce31b1be4754d4578e9ec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/abfcb64770ae72d69cbfd48a69a0dc9491425f51",
-                "reference": "abfcb64770ae72d69cbfd48a69a0dc9491425f51",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/cd5e65199ae8f54a91ce31b1be4754d4578e9ec9",
+                "reference": "cd5e65199ae8f54a91ce31b1be4754d4578e9ec9",
                 "shasum": ""
             },
             "require": {
@@ -832,11 +832,15 @@
                 "symfony/var-dumper": "^6.3",
                 "vlucas/phpdotenv": "^5.6"
             },
+            "require-dev": {
+                "pestphp/pest": "^2.24"
+            },
             "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Floky\\": "src/"
+                    "Floky\\": "src/",
+                    "Tests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -854,7 +858,7 @@
                 "issues": "https://github.com/v1p3r75/floky-core/issues",
                 "source": "https://github.com/v1p3r75/floky-core/tree/master"
             },
-            "time": "2023-11-16T23:13:53+00:00"
+            "time": "2023-11-17T02:22:05+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

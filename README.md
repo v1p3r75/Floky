@@ -107,6 +107,7 @@ Le développement de **Floky** est actuellement en cours, et nous accueillons av
 L'équipe de développement principal comprend actuellement les contributeurs suivants :
 
 - [Fortunatus KIDJE (v1p3r75)](https://github.com/v1p3r75) - Fondateur et développeur principal
+- [Kabirou ALASSANE (BlakvGhost)](https://github.com/BlakvGhost) - Développeur principal
 
 Nous sommes enthousiastes à l'idée de développer ce projet et d'ajouter de nouvelles fonctionnalités pour répondre aux besoins de la communauté des développeurs PHP. Rejoignez-nous dans cette aventure et contribuez à faire de **Floky** un outil encore plus léger et puissant pour le développement d'applications web en PHP.
 
