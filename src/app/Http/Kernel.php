@@ -15,6 +15,7 @@ return new class extends HttpKernel
     protected array $middlewares = [
 
         \App\Http\Middlewares\CorsMiddleware::class,
+        \App\Http\Middlewares\CSRFTokenMiddleware::class,
     ];
 
     protected array $middlewaresByRoute = [
