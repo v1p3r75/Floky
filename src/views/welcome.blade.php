@@ -71,7 +71,7 @@
         }
 
         .feature {
-            width: 45%;
+            width: 48%;
             min-height: 150px;
             padding: 20px;
             background-color: white;
