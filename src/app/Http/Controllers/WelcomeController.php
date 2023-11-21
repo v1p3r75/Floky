@@ -22,7 +22,7 @@ class WelcomeController extends Controller
             'password' => 'required'
         ];
 
-        // $validation = $request->validate($rules);
+        $request->validate($rules);
 
         $validation = validate($request->all(), $rules); // with helper
 

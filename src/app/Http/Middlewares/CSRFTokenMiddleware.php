@@ -15,9 +15,7 @@ class CSRFTokenMiddleware implements MiddlewareInterface
 
             if (! Security::checkToken($request->input('csrf_token'))) {
 
-                /**
-                 * TODO: render a 403 template instead of throw exception
-                 */
+                 // TODO: render a 401 template instead of throw exception
                 throw new Exception('Invalid CSRF token', 401);
             }
         }
