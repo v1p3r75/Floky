@@ -15,7 +15,7 @@ return new class extends HttpKernel
     protected array $middlewares = [
 
         \App\Http\Middlewares\CorsMiddleware::class,
-        \App\Http\Middlewares\CSRFTokenMiddleware::class,
+        \App\Http\Middlewares\CheckTokenMiddleware::class,
     ];
 
     protected array $middlewaresByRoute = [
@@ -31,9 +31,11 @@ return new class extends HttpKernel
 
     protected array $middlewaresAlias = [
 
-        'first' => FirstMiddleware::class,
-        'second' => SecondMiddleware::class,
+        'first' => FirstMiddleware::class, // Just for testing
+        'second' => SecondMiddleware::class, // Just for testing
+        
         'cors' => \App\Http\Middlewares\CorsMiddleware::class,
+        'csrf_token' => \App\Http\Middlewares\CheckTokenMiddleware::class,
     ];
 
 };
