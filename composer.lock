@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "blakvghost/php-validator",
-            "version": "v1.1.2",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BlakvGhost/PHPValidator.git",
-                "reference": "b9a8d78f698926bb360cb70208d273e26b936d16"
+                "reference": "d57663eff17ab0dfe37c93a680d7774c779846cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BlakvGhost/PHPValidator/zipball/b9a8d78f698926bb360cb70208d273e26b936d16",
-                "reference": "b9a8d78f698926bb360cb70208d273e26b936d16",
+                "url": "https://api.github.com/repos/BlakvGhost/PHPValidator/zipball/d57663eff17ab0dfe37c93a680d7774c779846cc",
+                "reference": "d57663eff17ab0dfe37c93a680d7774c779846cc",
                 "shasum": ""
             },
             "require": {
@@ -45,9 +45,9 @@
             "description": "PHPValidator is a modern PHP library for data validation in your PHP applications. It provides a flexible and extensible way to validate data using predefined rules or by creating custom validation rules.",
             "support": {
                 "issues": "https://github.com/BlakvGhost/PHPValidator/issues",
-                "source": "https://github.com/BlakvGhost/PHPValidator/tree/v1.1.2"
+                "source": "https://github.com/BlakvGhost/PHPValidator/tree/v1.4.1"
             },
-            "time": "2023-11-16T20:03:57+00:00"
+            "time": "2023-11-22T15:58:04+00:00"
         },
         {
             "name": "eftec/bladeone",
@@ -815,12 +815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/v1p3r75/floky-core.git",
-                "reference": "63df9c2a97a205d382246aaa5293227516841fe2"
+                "reference": "e06d35e8ac01b2aff9ee038e6433615954620ce3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/63df9c2a97a205d382246aaa5293227516841fe2",
-                "reference": "63df9c2a97a205d382246aaa5293227516841fe2",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/e06d35e8ac01b2aff9ee038e6433615954620ce3",
+                "reference": "e06d35e8ac01b2aff9ee038e6433615954620ce3",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                 "issues": "https://github.com/v1p3r75/floky-core/issues",
                 "source": "https://github.com/v1p3r75/floky-core/tree/master"
             },
-            "time": "2023-11-19T11:40:02+00:00"
+            "time": "2023-11-24T11:43:43+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
