@@ -15,6 +15,7 @@ return new class extends HttpKernel
     protected array $middlewares = [
 
         \App\Http\Middlewares\CorsMiddleware::class,
+        \App\Http\Middlewares\PreventRequestMaintenanceMiddleware::class,
         \App\Http\Middlewares\CheckTokenMiddleware::class,
     ];
 
@@ -36,6 +37,7 @@ return new class extends HttpKernel
         
         'cors' => \App\Http\Middlewares\CorsMiddleware::class,
         'csrf_token' => \App\Http\Middlewares\CheckTokenMiddleware::class,
+        'prevent_request' => \App\Http\Middlewares\PreventRequestMaintenanceMiddleware::class,
     ];
 
 };

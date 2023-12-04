@@ -1,6 +1,6 @@
 @extends('templates.layout')
 
-@section('code', 501)
+@section('code', 503)
 
 @section('title', 'APPLICATION DOWN !')
 
