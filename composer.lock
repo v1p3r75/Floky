@@ -815,12 +815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/v1p3r75/floky-core.git",
-                "reference": "78404baf5ffd9133462b841633a927f4a450f039"
+                "reference": "e2697ff72fb2f5830d462e186230febd98d78742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/78404baf5ffd9133462b841633a927f4a450f039",
-                "reference": "78404baf5ffd9133462b841633a927f4a450f039",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/e2697ff72fb2f5830d462e186230febd98d78742",
+                "reference": "e2697ff72fb2f5830d462e186230febd98d78742",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                 "issues": "https://github.com/v1p3r75/floky-core/issues",
                 "source": "https://github.com/v1p3r75/floky-core/tree/master"
             },
-            "time": "2023-12-04T08:29:55+00:00"
+            "time": "2023-12-04T09:18:49+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
