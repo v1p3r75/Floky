@@ -1,0 +1,11 @@
+<?php
+
+use Floky\Console\Console;
+
+require './vendor/autoload.php';
+
+$kernel = require __DIR__ . "/src/app/Console/Kernel.php"; // load app commands
+
+$cli = new Console(__DIR__ . '/src');
+
+return $cli->saveCommands($kernel)->run();
