@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TestCustomRequest;
+use App\Http\Resources\TestResource;
 use Floky\Http\Controllers\Controller;
 use Floky\Http\Requests\Request;
 
@@ -31,6 +32,16 @@ class WelcomeController extends Controller
         }
 
         return dump('Validated');
+    }
+
+    public function test(Request $request): \Floky\Http\Responses\Response
+    {
+
+        $resource = new TestResource(['attr' => 'Value']);
+        return response()->json([
+            'success' => true,
+            'data' => $resource->get()
+        ]);
     }
 
 }
