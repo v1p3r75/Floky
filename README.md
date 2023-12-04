@@ -85,10 +85,10 @@ Une fois que vous avez installé Floky, vous êtes prêt à lancer votre applica
 5. **Lancement du Serveur de Développement** : Utilisez la commande spécifique pour lancer le serveur de développement intégré de votre framework. Cela vous permettra de tester votre application localement.
 
    ```bash
-   php -S localhost:9000 server.php
+   php floky serve
     ```	
     
-    Cette commande lancera le serveur de développement sur http://localhost:9000, et vous pourrez accéder à votre application à partir de votre navigateur.
+    Cette commande lancera le serveur de développement sur http://localhost:8080 (par défaut), et vous pourrez accéder à votre application à partir de votre navigateur.
 
 ### Utiliser un Serveur Web Local
 
@@ -117,13 +117,13 @@ Nous sommes enthousiastes à l'idée de développer ce projet et d'ajouter de no
 - Clonez votre fork :
 
     ```bash
-    git clone https://github.com/v1p3r/floky-core.git
+    git clone https://github.com/v1p3r75/floky-core.git
     ```
 
     (Pour travailler sur le core) ou
 
     ```bash
-        git clone https://github.com/v1p3r/floky.git
+        git clone https://github.com/v1p3r75/floky.git
     ```
     (Pour travailler sur l'application)
 
