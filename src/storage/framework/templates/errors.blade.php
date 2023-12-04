@@ -215,12 +215,12 @@
                 </svg>
             </div>
             <div style="align-self: center; width: 78%">
-                <h2 title="Exception Name">{{ $name }}</h2>
-                <h3 title="Exception file">Message : {{ $message }}</h3>
-                <h3 title="Exception Code">
+                <h2 title="Exception name">{{ $name }}</h2>
+                <h3 title="Exception message">Message : {{ $message }}</h3>
+                <h3 title="Exception file">
                     <a href="{{ $file }}" target="_blank" style="color: inherit">File : {{ $file . ':' . $line}}</a>
                 </h3>
-                <h3 title="Exception Message">Code : {{ $code }}</h3>
+                <h3 title="Exception code">Code : {{ $code }}</h3>
             </div>
         </div>
         <hr>
