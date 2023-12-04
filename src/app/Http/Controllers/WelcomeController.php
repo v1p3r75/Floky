@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestCustomRequest;
 use Floky\Http\Controllers\Controller;
 use Floky\Http\Requests\Request;
 
@@ -9,7 +10,7 @@ class WelcomeController extends Controller
 {
 
 
-    public function index(Request $request, $id) {
+    public function index(TestCustomRequest $request, $id) {
 
         echo "Welcome to floky ";
     }
@@ -22,9 +23,7 @@ class WelcomeController extends Controller
             'password' => 'required'
         ];
 
-        $request->validate($rules);
-
-        $validation = validate($request->all(), $rules); // with helper
+        $validation = validate(['email' => 'test'], $rules); // with helper
 
         if (!$validation->isValid()) {
 

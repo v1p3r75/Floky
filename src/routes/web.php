@@ -10,4 +10,4 @@ Route::get('/', function(Request $request) {
 
 })->name('home')->middlewares(['first', 'second']);
 
-Route::get('/page', [WelcomeController::class, 'index'])->name('page');
+Route::get('/page', [WelcomeController::class])->name('page');
