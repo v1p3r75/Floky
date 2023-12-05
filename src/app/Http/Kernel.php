@@ -15,7 +15,7 @@ return new class extends HttpKernel
     protected array $middlewares = [
 
         \App\Http\Middlewares\CorsMiddleware::class,
-        \App\Http\Middlewares\PreventRequestMaintenanceMiddleware::class,
+        \App\Http\Middlewares\PreventRequestMiddleware::class,
         \App\Http\Middlewares\CheckTokenMiddleware::class,
     ];
 

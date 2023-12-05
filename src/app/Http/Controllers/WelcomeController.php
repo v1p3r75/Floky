@@ -34,14 +34,16 @@ class WelcomeController extends Controller
         return dump('Validated');
     }
 
-    public function test(Request $request): \Floky\Http\Responses\Response
+    public function test(Request $request)
     {
 
         $resource = new TestResource(['attr' => 'Value']);
-        return response()->json([
-            'success' => true,
-            'data' => $resource->get()
-        ]);
+        
+        $collection = collect([3, 6, 7, 8]);
+
+        // $collection->has(56))
+
+        return $resource->toJSON();
     }
 
 }
