@@ -6,10 +6,10 @@ use App\Http\Requests\TestCustomRequest;
 use App\Http\Resources\TestResource;
 use Floky\Http\Controllers\Controller;
 use Floky\Http\Requests\Request;
+use Floky\Routing\Attributes\Get;
 
 class WelcomeController extends Controller
 {
-
 
     public function index(TestCustomRequest $request, $id) {
 
@@ -34,7 +34,7 @@ class WelcomeController extends Controller
         return dump('Validated');
     }
 
-    public function test(Request $request)
+    public function resource(Request $request)
     {
 
         $resource = new TestResource(['attr' => 'Value']);
@@ -44,6 +44,14 @@ class WelcomeController extends Controller
         // $collection->has(56))
 
         return $resource->toJSON();
+    }
+
+
+    #[Get(uri: 'test', middlewares: ['first'])]
+    public function test(Request $request)
+    {
+
+        dd($request->attr);
     }
 
 }
