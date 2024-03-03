@@ -11,10 +11,17 @@ use Floky\Routing\Attributes\Get;
 class WelcomeController extends Controller
 {
 
-    public function index(TestCustomRequest $request, $id) {
+    #[Get('welcome', 't', ['first'])]
+    public function index(Request $request) {
 
-        echo "Welcome to floky ";
+        return response()->json(['user' => $request->header()->getBearer()]);
     }
+
+
+    // public function index(TestCustomRequest $request, $id) {
+
+    //     echo "Validated !";
+    // }
     
     public function validate(Request $request) {
 
