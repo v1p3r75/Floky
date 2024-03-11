@@ -6,7 +6,7 @@
 
 - **Architecture MVC** : Organisez votre code de manière propre et modulaire.
 - **Routage Puissant** : Gérez les URL de manière flexible pour diriger les demandes vers les contrôleurs appropriés.
-- **Gestion de Base de Données** : Facilitez l'interaction avec les bases de données grâce à Nexa (un ORM nouvelle génération flexible puissant et facile à prendre en main).
+- **Gestion de Base de Données** : Facilitez l'interaction avec les bases de données grâce à [NexaORM](https://nexa-orm.vercel.app/) (un ORM nouvelle génération flexible puissant et facile à prendre en main).
 - **Sécurité** : Intégrez des mécanismes de sécurité pour protéger votre application contre les vulnérabilités courantes.
 - **Vue Flexible** : Utilisez le moteur de template [BladeOne](https://github.com/EFTEC/BladeOne/) pour concevoir des vues riches et dynamiques.
 - **Conteneur de Dépendances** : Utilisez un conteneur de dépendances pour gérer les services de votre application de manière efficace.

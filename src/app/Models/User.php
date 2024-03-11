@@ -1,7 +1,15 @@
 <?php
 
+namespace App\Models;
 
-class User
+use App\Entities\UserEntity;
+use Floky\Models\Model;
+
+class User extends Model
 {
+
+    protected $entity = UserEntity::class;
+
+    protected $fillable = ['username', 'created_at'];
 
 }
