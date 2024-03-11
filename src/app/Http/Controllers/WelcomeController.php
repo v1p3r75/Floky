@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TestCustomRequest;
 use App\Http\Resources\TestResource;
+use App\Models\User;
 use Floky\Http\Controllers\Controller;
 use Floky\Http\Requests\Request;
 use Floky\Routing\Attributes\Get;
@@ -11,10 +12,17 @@ use Floky\Routing\Attributes\Get;
 class WelcomeController extends Controller
 {
 
-    public function index(TestCustomRequest $request, $id) {
+    #[Get('welcome', 't', ['first'])]
+    public function index(Request $request) {
 
-        echo "Welcome to floky ";
+        return response()->json(['user' => $request->header()->getBearer()]);
     }
+
+
+    // public function index(TestCustomRequest $request, $id) {
+
+    //     echo "Validated !";
+    // }
     
     public function validate(Request $request) {
 
@@ -52,6 +60,16 @@ class WelcomeController extends Controller
     {
 
         dd($request->attr);
+    }
+
+    #[Get('models')]
+    public function models(Request $request, User $user) {
+
+        // User::insert(['username' => 'Karl']);
+
+        $result = User::findAll();
+
+        return response()->json(['total' => $result->random()]);
     }
 
 }
