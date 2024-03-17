@@ -93,13 +93,19 @@
         .feature h3 {
             margin: 20px 0 0 0;
         }
+
+        @media only screen and (max-width: 767px) {
+            .feature {
+                width: 100%;
+            }
+        }
     </style>
 
 </head>
 
 <body>
     <div id="page">
-        <div class="header" style="display: flex; justify-content: space-between; padding: 8px">
+        <div class="header" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             <h1 class="brands">Floky</h1>
             <h4><a href="https://floky-docs.vercel.app/" target="_blank" class="help">Get Started</a></h4>
         </div>
