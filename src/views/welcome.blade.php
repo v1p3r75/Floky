@@ -101,7 +101,7 @@
     <div id="page">
         <div class="header" style="display: flex; justify-content: space-between; padding: 8px">
             <h1 class="brands">Floky</h1>
-            <h4><a href="https://github.com/v1p3r75/Floky" target="_blank" class="help">Get Started</a></h4>
+            <h4><a href="https://floky-docs.vercel.app/" target="_blank" class="help">Get Started</a></h4>
         </div>
         <div class="features">
             <div class="feature">

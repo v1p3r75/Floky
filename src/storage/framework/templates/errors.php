@@ -186,7 +186,7 @@
     <div id="page">
         <div class="header" style="display: flex; justify-content: space-between; padding: 8px">
             <h1 class="brands">Floky</h1>
-            <h4 class="error"><a href="#" class="help">Docs</a></h4>
+            <h4 class="error"><a href="https://floky-docs.vercel.app" target="_blank" class="help">Docs</a></h4>
         </div>
         <div class="errs">
             <div style="width: 20%; margin-right: 20px; color:white">
