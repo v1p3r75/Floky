@@ -10,6 +10,6 @@ class User extends Model
 
     protected $entity = UserEntity::class;
 
-    protected $fillable = ['username', 'created_at'];
+    protected $fillable = ['*'];
 
 }

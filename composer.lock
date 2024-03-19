@@ -1711,12 +1711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/v1p3r75/floky-core.git",
-                "reference": "dc13034cf9a861a937be89077d982c023f0d755b"
+                "reference": "0a320d144d3ab9e92d2d08200a3ca509adf45826"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/dc13034cf9a861a937be89077d982c023f0d755b",
-                "reference": "dc13034cf9a861a937be89077d982c023f0d755b",
+                "url": "https://api.github.com/repos/v1p3r75/floky-core/zipball/0a320d144d3ab9e92d2d08200a3ca509adf45826",
+                "reference": "0a320d144d3ab9e92d2d08200a3ca509adf45826",
                 "shasum": ""
             },
             "require": {
@@ -1758,7 +1758,7 @@
                 "issues": "https://github.com/v1p3r75/floky-core/issues",
                 "source": "https://github.com/v1p3r75/floky-core/tree/master"
             },
-            "time": "2024-03-10T20:40:02+00:00"
+            "time": "2024-03-19T11:48:01+00:00"
         },
         {
             "name": "v1p3r75/nexa-orm",

@@ -127,7 +127,7 @@
             <h1>@yield('code')</h1>
             <h2>@yield('title')</h2>
             <p>@yield('message')</p>
-            <a href="#">Back to homepage</a>
+            <a href={{ App\Providers\AppServiceProvider::HOME }}>Back to homepage</a>
         </div>
     </div>
 
